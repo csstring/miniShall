@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:09:13 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/15 21:28:42 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 19:11:35 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_close_fd(pid_t pid, t_pipex *val, int i);
 int		ft_pipex(int ac, t_input *input, t_pipex *val, t_env *env);
 //main
 void	ft_init(t_pipex *val, t_input *input);
-int		ft_pipe(char *line, char **envp, t_env *env);
+int		ft_pipe(char *line, char **envp, t_env *env, int *exit_code);
 void	dfl_handler(int sigquit);
 //etc
 int		ft_dire_in(char **indirec, int index);
@@ -84,7 +84,7 @@ int		ft_taptosp(char *line);
 int		ft_in_built(t_pipex *val, t_input *input, int i,  t_env *env);
 //syntax
 int		ft_pass_quot(char *line, int i);
-int		ft_syntax_check(char *line);
+int		ft_syntax_check(char **line, int *exit_code);
 //free
 void	ft_free2(void **temp);
 void	ft_free3(void ***temp);
