@@ -161,19 +161,27 @@ int	ft_outdirec_syntax_check(char *line)
 
 int	ft_syntax_check(char **line, int *exit_code)
 {
-	*exit_code = ft_quot_check(*line);
-	if (*exit_code)
+	if (ft_quot_check(*line))
+	{
+		*exit_code = ft_quot_check(*line);
 		return (*exit_code);
+	}
 	*line = ft_add_space(*line, '>');
 	*line = ft_add_space(*line, '<');
-	*exit_code = ft_bracket_check(*line);
-	if (*exit_code)
+	if (ft_bracket_check(*line))
+	{
+		*exit_code = ft_bracket_check(*line);
 		return (*exit_code);
-	*exit_code = ft_indirec_syntax_check(*line);
-	if (*exit_code)
+	}
+	if (ft_indirec_syntax_check(*line))
+	{
+		*exit_code = ft_indirec_syntax_check(*line);
 		return (*exit_code);
-	*exit_code = ft_outdirec_syntax_check(*line);
-	if (*exit_code)
+	}
+	if (ft_outdirec_syntax_check(*line))
+	{
+		*exit_code = ft_outdirec_syntax_check(*line);
 		return (*exit_code);
+	}
 	return (0);
 }

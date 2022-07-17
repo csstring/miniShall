@@ -32,7 +32,7 @@ void	ft_free2(void **temp)
 	}
 }
 
-void	ft_pipe_clear(t_pipex *val, t_input *input)
+void	ft_pipe_clear(t_pipex *val)
 {
 	ft_free2((void **)val->exe_path);
 	ft_free2((void **)val->ev);
@@ -40,7 +40,7 @@ void	ft_pipe_clear(t_pipex *val, t_input *input)
 	ft_free3((void ***)val->cmd);
 	ft_free3((void ***)val->indirec);
 	ft_free3((void ***)val->outdirec);
-	ft_free2((void **)input->av);
+	ft_free2((void **)val->av);
 	free(val->line);
 //	ft_free3((void ***)val->temp);
 }

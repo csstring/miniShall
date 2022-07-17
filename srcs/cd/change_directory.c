@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 21:48:46 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 22:09:39 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,13 @@ char	*check_cd_home(t_env *env, char *line, char **home)
 		if (!*home)
 			return (NULL);
 	}
-	else if (!ft_strncmp(line[1], "~", 2))
+	else if (!ft_strncmp(line, "~", 2))
 		*home = ft_strdup("/Users/soo"); // /Users/schoe
 	return (*home);
 }
 
+
+void	cd_hi
 int chdir_main(t_env *env, char **line, char ***env_arr)
 {
 	char	*home;
@@ -67,21 +69,30 @@ int chdir_main(t_env *env, char **line, char ***env_arr)
 	int		ret;
 
 	home = NULL;
-	before = getcwd(NULL, 0);
-	home = check_cd_home(env, line[1], &home);
-	if (!home)
-		ret = chdir(line[1]);
+	if (!ft_strncmp(line[1], "-", 2))
+	{
+		before = find_env(env, "PWD");
+		after = find_env(env, "OLDPWD");
+		ret = chdir(after);
+	}
 	else
 	{
-		ret = chdir(home);
-		free(home);
+		before = getcwd(NULL, 0);
+		home = check_cd_home(env, line[1], &home);
+		if (!home)
+			ret = chdir(line[1]);
+		else
+		{
+			ret = chdir(home);
+			free(home);
+		}
+		if (ret == -1)
+		{
+			free(before);
+			return (print_error(line[1]));
+		}
+		after = getcwd(NULL, 0);
 	}
-	if (ret == -1)
-	{
-		free(before);
-		return (print_error(line[1]));
-	}
-	after = getcwd(NULL, 0);
 	change_path(env, env_arr, &before, "OLDPWD=");
 	change_path(env, env_arr, &after, "PWD=");
 	return (0);

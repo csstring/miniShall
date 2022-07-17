@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:52:52 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/15 21:39:58 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 21:20:53 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_in_out_close(int	infile, int outfile)
 	}
 }
 
-void	ft_cmd_end(int i, t_pipex *val, t_input *input)
+void	ft_cmd_end(int i, t_pipex *val)
 {	
 	int	infile;
 	int	outfile;
@@ -39,13 +39,13 @@ void	ft_cmd_end(int i, t_pipex *val, t_input *input)
 	if (infile == -1)
 		dup2(val->fd[i - 1][P_R], STDIN_FILENO);
 	close(val->fd[i - 1][P_R]);
-	ft_error_check(i, input, val);
+	ft_error_check_exit(i, val);
 	//	if (ft_built_check)
 //		exit (ft_in_built());
-	execve(val->exe_path[i], val->cmd[i], input->ev);
+	execve(val->exe_path[i], val->cmd[i], val->ev);
 }
 
-void	ft_cmd_mid1(int i, t_pipex *val, t_input *input)
+void	ft_cmd_mid1(int i, t_pipex *val)
 {
 	int	infile;
 	int	outfile;
@@ -62,20 +62,20 @@ void	ft_cmd_mid1(int i, t_pipex *val, t_input *input)
 	if (outfile == -1)
 		dup2(val->fd[i][P_W], STDOUT_FILENO);
 	close(val->fd[i][P_W]);
-	ft_error_check(i, input, val);
+	ft_error_check_exit(i, val);
 	//	if (ft_built_check)
 //		exit (ft_in_built());
-	execve(val -> exe_path[i], val -> cmd[i], input->ev);
+	execve(val -> exe_path[i], val -> cmd[i], val->ev);
 }
 
-void	ft_cmd_start(int i, t_pipex *val, t_input *input)
+void	ft_cmd_start(int i, t_pipex *val)
 {
 	int	infile;
 	int	outfile;
 
 	infile = ft_dire_in(val->indirec[i], i);
 	outfile = ft_dire_out(val->outdirec[i]);
-	if (input->ac != 1)
+	if (val->ac != 1)
 	{
 		close(val->fd[i][P_R]);
 		if (outfile == -1)
@@ -85,13 +85,13 @@ void	ft_cmd_start(int i, t_pipex *val, t_input *input)
 		}
 	}
 	ft_in_out_close(infile, outfile);
-	ft_error_check(i, input, val);
+	ft_error_check_exit(i, val);
 //	if (ft_built_check)
 //		exit (ft_in_built());
-	execve(val -> exe_path[i], val -> cmd[i], input->ev);
+	execve(val -> exe_path[i], val -> cmd[i], val->ev);
 }
 
-int	ft_cmd_parent(int i, t_pipex *val, t_input *input, t_env *env)
+int	ft_cmd_parent(int i, t_pipex *val, t_env *env)
 {
 	int	infile;
 	int	outfile;
@@ -105,9 +105,10 @@ int	ft_cmd_parent(int i, t_pipex *val, t_input *input, t_env *env)
 	infile = ft_dire_in(val->indirec[i], i);
 	outfile = ft_dire_out(val->outdirec[i]);
 	ft_in_out_close(infile, outfile);
-	//ft_error_check(i, input, val);
 	if (ft_built_check(val->cmd[i][0]))
-		exit_code = ft_in_built(val, input, i, env);
+		exit_code = ft_in_built(val, i, env);
+	else
+		exit_code = ft_error_check(i, val);
 	ft_in_out_close(temp_in, temp_out);
 	return (exit_code);
 }
