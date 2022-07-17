@@ -24,7 +24,6 @@ static char	*ft_re_trans_quot2(char *line)
 
 	k = 0;
 	i = 0;
-	printf("%s\n", line);
 	temp = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
 	while (line[i] != '\'' && line[i] != '\"' && line[i] != '\0' && line[i] != ' ')
 				temp[k++] = line[i++];

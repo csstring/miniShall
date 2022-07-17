@@ -54,54 +54,42 @@ char	*ft_prompt(void)
 	}
 }
 
+void	ft_tc(int ac, char **av)
+{
+	struct termios termios;
+
+    tcgetattr(STDIN_FILENO, &termios);
+    termios.c_lflag &= ~ECHOCTL;
+    tcsetattr(STDIN_FILENO, TCSANOW, &termios);
+	(void)ac;
+	(void)av;
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	char	*line;
-	struct termios termios;
-	int	exit_code;
-	
+	int	exit_code;	
 	t_env *env;
 
 	env = (t_env *)malloc(sizeof(t_env));
 	ft_memset(env, 0, sizeof(t_env));
 	init_env(env, envp);
-
-	(void)ac;
-	(void)av;
-    tcgetattr(STDIN_FILENO, &termios);
-    termios.c_lflag &= ~ECHOCTL;
-    tcsetattr(STDIN_FILENO, TCSANOW, &termios);
+	ft_tc(ac, av);
     exit_code = 0;
 	signal(SIGINT, sig_handler);
 	while (1)
 	{
 		signal(SIGQUIT, SIG_IGN);
 		line = ft_prompt();
-		line = ft_add_space(line, '>');
-		line = ft_add_space(line, '<');
-		exit_code = ft_syntax_check(line);
-		if (exit_code)
+		if (ft_syntax_check(&line, &exit_code) || ft_taptosp(line))
 		{
-			signal(SIGQUIT, SIG_DFL);
-			signal(SIGINT, sig_handler);
-			free(line);
-			continue ;
-		}
-		if (ft_taptosp(line))
-		{
-			signal(SIGQUIT, SIG_DFL);
+//			signal(SIGQUIT, SIG_DFL);
 			signal(SIGINT, sig_handler);
 			free(line);
 			continue ;
 		}
 		quote_line(&line, exit_code, env);
-		if (exit_code)
-		{
-			printf("\n%d\n", exit_code);
-			signal(SIGQUIT, SIG_DFL);
-		}
-		else
-			exit_code = ft_pipe(line, envp, env);
+		ft_pipe(line, envp, env, &exit_code);
 		signal(SIGINT, sig_handler);
 		free(line);
 //		system("leaks minishell");
