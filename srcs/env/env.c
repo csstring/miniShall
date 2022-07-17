@@ -6,12 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:02:34 by soo               #+#    #+#             */
-/*   Updated: 2022/07/15 20:54:44 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 20:47:13 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "env.h"
+#include "minishell.h"
 
 static	t_env *get_last(t_env *head)
 {

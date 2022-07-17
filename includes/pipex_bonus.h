@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:09:13 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/17 20:35:51 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/17 21:56:25 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #include <fcntl.h>
 # include "libft.h"
 #include "env.h"
+#include "cd.h"
 
 typedef struct s_pipex
 {

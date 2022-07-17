@@ -6,12 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:09:59 by soo               #+#    #+#             */
-/*   Updated: 2022/07/15 19:56:18 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 20:46:55 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "env.h"
+#include "minishell.h"
 
 char	**line_format(char *line, char *cmd)
 {
@@ -37,39 +36,39 @@ char	**line_format(char *line, char *cmd)
 
 int	format_check(char *line)
 {
-	int		i;
 	int		e_flag;
-
-	i = 0;
+	
 	e_flag = 0;
 	if (line[0] >= '0' && line[0] <= '9')
 		return (0);
 	if (line[0] == '=')
 		return (0);
+	e_flag = find_equal(line);
+	if (e_flag)
+	{
+		if (find_first_ch(line, ' ') != -1 && (find_first_ch(line, ' ') < find_first_ch(line, '=')))
+			return (0);
+	}
+	else
+	{
+		if (find_first_ch(line, ' ') != -1)
+			return (0);
+	}
+	return (1);
+}
+
+int	find_first_ch(char *line, char c)
+{
+	int	i;
+
+	i = 0;
 	while (line[i])
 	{
-		if (line[i] == '=')
-		{
-			e_flag = 1;
-			break;
-		}
+		if (line[i] == c)
+			return (i);
 		++i;
 	}
-	if (e_flag)
-		return (1);
-	else if (!e_flag)
-	{
-		i = 0;
-		while (line[i])
-		{
-			if (line[i] == ' ')
-				return (0);
-			++i;
-		}
-	}
-	if (i == 0)
-		return (0);
-	return (1);
+	return (-1);
 }
 
 void str_free(char **str)

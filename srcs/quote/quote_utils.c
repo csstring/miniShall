@@ -6,13 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:07:16 by soo               #+#    #+#             */
-/*   Updated: 2022/07/14 16:29:53 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 20:47:03 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "quote.h"
-#include "env.h"
-#include <stdio.h>
+#include "minishell.h"
 
 char	*find_exit_code(char **sep_str, int exit_code)
 {
@@ -71,8 +69,6 @@ int	cnt_c(char *line, char c)
 	}
 	return (cnt);
 }
-
-
 
 int	find_first_c(char *line, char c)
 {

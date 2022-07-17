@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.h                                               :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 18:06:21 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 21:42:02 by soo              ###   ########.fr       */
+/*   Created: 2022/07/17 20:45:07 by soo               #+#    #+#             */
+/*   Updated: 2022/07/17 20:49:20 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CD_H
-# define CD_H
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-# include "env.h"
-
-char	*no_arg_cd_home(t_env *env);
-void	change_path(t_env *env, char ***env_arr, char **path, char *key);
-int chdir_main(t_env *env, char **line, char ***env_arr);
+#include "cd.h"
+#include "env.h"
+#include "ft_printf.h"
+#include "libft.h"
+#include "pipex_bonus.h"
+#include "quote.h"
 
 #endif

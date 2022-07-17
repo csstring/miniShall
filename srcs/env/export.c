@@ -6,12 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:26:02 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 16:30:13 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 20:47:16 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "env.h"
+#include "minishell.h"
 //!!널가드
 void	print_export(t_env *head)
 {
@@ -33,7 +32,7 @@ void	print_export(t_env *head)
 	}
 }
 
-static int	find_equal(char *line)
+int	find_equal(char *line)
 {
 	while(*line)
 	{
@@ -166,7 +165,7 @@ int	export(t_env *head, char **line, char ***env_arr)
 	// 	ft_putstr_fd("command not found\n", 2);
 	// 	return (1);
 	// }
-	// while (*line++)
-	// 	printf("%s\n", *line);
+	// while (*line)
+	// 	printf("%s\n", *line++);
 	return (export_env(head, line, env_arr));
 }
