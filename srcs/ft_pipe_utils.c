@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:22 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/15 21:30:51 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 20:51:47 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include <signal.h>
 #include <termios.h>
 
-void	ft_make_pipe(t_input *input, t_pipex *val)
+void	ft_make_pipe(t_pipex *val)
 {
 	int	ac_temp;
 	int	i;
 
 	i = 0;
-	ac_temp = input->ac;
+	ac_temp = val->ac;
 	val->fd = (int **)malloc(sizeof(int *) * ac_temp - 1);
 	if (val->fd == NULL)
 		exit(1);
@@ -93,21 +93,21 @@ void	ft_close_fd(pid_t pid, t_pipex *val, int i)
 		ft_close_fd2(val, i, end_temp);
 }
 
-static int	ft_pipex2(pid_t pid, t_input *input, t_pipex *val, int i)
+static int	ft_pipex2(pid_t pid, t_pipex *val, int i)
 {
 	int	st;
 	int	k;
 
 	if (pid == 0)
 		signal(SIGQUIT, SIG_DFL);
-	if (input->ac != 1)
+	if (val->ac != 1)
 		ft_close_fd(pid, val, i);
 	if (pid == 0 && i == 0)
-		ft_cmd_start(i, val, input);
+		ft_cmd_start(i, val);
 	else if (pid == 0 && i == val->end)
-		ft_cmd_end(i, val, input);
+		ft_cmd_end(i, val);
 	else if (pid == 0)
-		ft_cmd_mid1(i, val, input);
+		ft_cmd_mid1(i, val);
 	signal(SIGINT, SIG_IGN);
 	waitpid(pid, &st, 0);
 	k = 0;
@@ -119,7 +119,7 @@ static int	ft_pipex2(pid_t pid, t_input *input, t_pipex *val, int i)
 	return (st >> 8 & 0x000000ff);
 }
 
-int	ft_pipex(int ac, t_input *input, t_pipex *val, t_env *env)
+int	ft_pipex(int ac, t_pipex *val, t_env *env)
 {
 	pid_t	pid;
 	int		i;
@@ -127,7 +127,7 @@ int	ft_pipex(int ac, t_input *input, t_pipex *val, t_env *env)
 	i = 0;
 	ft_make_here_doc(val->indirec);
 	if (ac == 1 && ft_built_check(val->cmd[0][0]))
-		return (ft_cmd_parent(i, val, input, env));
+		return (ft_cmd_parent(i, val, env));
 	else
 	{
 		while (ac > 0)
@@ -144,6 +144,5 @@ int	ft_pipex(int ac, t_input *input, t_pipex *val, t_env *env)
 			i++;
 		}
 	}
-	ft_pipex2(pid, input, val, i);
-	return (0);
+	return (ft_pipex2(pid, val, i));
 }

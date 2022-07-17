@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:08 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/17 21:13:34 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/17 21:13:29 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <string.h>
 
-static int	ft_check_file(int i, t_pipex *val)
+static void	ft_check_file(int i, t_pipex *val)
 {
 	int	j;
 
@@ -23,13 +23,12 @@ static int	ft_check_file(int i, t_pipex *val)
 	{
 		if (val->cmd[i][0][j] == '/')
 		{
-			ft_eprintf("ss_shell: %s: %s\n", val->av[i + val->check], \
+			ft_eprintf("ss_shell: %s: %s\n", val->cmd[i][0], \
 					strerror(2));
-			return (2);
+			exit(2);
 		}
 		j++;
 	}
-	return (0);
 }
 
 static int	ft_check_dir(int i, t_pipex *val)
@@ -51,26 +50,24 @@ static int	ft_check_dir(int i, t_pipex *val)
 			return (0);
 		j++;
 	}
-	ft_eprintf("ss_shell: %s: %s\n", val->av[i + val->check], \
+	ft_eprintf("ss_shell: %s: %s\n", val->cmd[i][0], \
 			strerror(21));
-	return (21);
+	exit(21);
 }
 
-int	ft_error_check(int i, t_pipex *val)
+void	ft_error_check_exit(int i, t_pipex *val)
 {
 	if (val->cmd[i][0][0] == 0)
 	{
 		ft_eprintf("ss_shell: : command not found\n");
-		return (127);
+		exit(127);
 	}
 	ft_check_dir(i, val);
 	if (val->exe_path[i] == NULL)
 	{
-		if (ft_check_file(i, val))
-			return (2);
+		ft_check_file(i, val);
 		ft_eprintf("ss_shell: %s: command not found\n", \
-				val->av[i + val->check]);
-		return (127);
+				val->cmd[i][0]);
+		exit(127);
 	}
-	return (0);
 }

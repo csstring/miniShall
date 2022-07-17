@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:09:13 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/17 19:11:35 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/17 20:35:51 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 typedef struct s_pipex
 {
-	char	**ev;
+	char	**path;
 	char	***indirec;
 	char	***outdirec;
 	char	***temp;
@@ -40,37 +40,42 @@ typedef struct s_pipex
 	char	**exe_path;
 	char	*line;
 	char	***trans;
-	pid_t	pid;//
+	pid_t	pid;
 	int		**fd;
 	int		end;
 	int		check;
+	int		ac;
+	char	**av;
+	char	**ev;
+	char	***origin_ev;
 }	t_pipex;
-
+/*
 typedef struct s_input
 {
 	int		ac;
 	char	**av;
 	char	**ev;
 }	t_input;
-
+*/
 //ft_cmd
-void	ft_cmd_end(int i, t_pipex *val, t_input *input);
-void	ft_cmd_mid1(int i, t_pipex *val, t_input *input);
-void	ft_cmd_start(int i, t_pipex *val, t_input *input);
-int		ft_cmd_parent(int i, t_pipex *val, t_input *input,  t_env *env);
+void	ft_cmd_end(int i, t_pipex *val);
+void	ft_cmd_mid1(int i, t_pipex *val);
+void	ft_cmd_start(int i, t_pipex *val);
+int		ft_cmd_parent(int i, t_pipex *val, t_env *env);
 //ft_error_check
-void	ft_error_check(int i, t_input *input, t_pipex *val);
+int		ft_error_check(int i, t_pipex *val);
+void	ft_error_check_exit(int i, t_pipex *val);
 //ft_parsing
 int		ft_access_check(char *cmd, t_pipex *val, int check);
-void	ft_av_parsing(t_input *input, t_pipex *val);
+void	ft_av_parsing(t_pipex *val);
 char	**ft_ev_parsing(char **enpv);
 //ft_pipex
-void	ft_make_pipe(t_input *input, t_pipex *val);
+void	ft_make_pipe(t_pipex *val);
 void	ft_close_fd(pid_t pid, t_pipex *val, int i);
-int		ft_pipex(int ac, t_input *input, t_pipex *val, t_env *env);
+int		ft_pipex(int ac, t_pipex *val, t_env *env);
 //main
-void	ft_init(t_pipex *val, t_input *input);
-int		ft_pipe(char *line, char **envp, t_env *env, int *exit_code);
+void	ft_init(t_pipex *val);
+int		ft_pipe(char *line, char ***envp, t_env *env, int *exit_code);
 void	dfl_handler(int sigquit);
 //etc
 int		ft_dire_in(char **indirec, int index);
@@ -81,14 +86,14 @@ int		ft_direc_count(char **str, char *c);
 void	ft_tolower_str(char *str);
 int		ft_built_check(char *str);
 int		ft_taptosp(char *line);
-int		ft_in_built(t_pipex *val, t_input *input, int i,  t_env *env);
+int		ft_in_built(t_pipex *val, int i,  t_env *env);
 //syntax
 int		ft_pass_quot(char *line, int i);
 int		ft_syntax_check(char **line, int *exit_code);
 //free
 void	ft_free2(void **temp);
 void	ft_free3(void ***temp);
-void	ft_pipe_clear(t_pipex *val, t_input *input);
+void	ft_pipe_clear(t_pipex *val);
 //echo,pwd
 void	ft_print_echo(t_pipex *val, int i, int k, int check);
 void	*ft_echo(t_pipex *val, int i);
