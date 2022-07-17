@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:16 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/17 16:37:00 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/17 20:09:02 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_access_check2(char *cmd, t_pipex *val, int check, int i)
 	}
 	else
 	{
-		temp = ft_strjoin(val -> ev[i], "/");
+		temp = ft_strjoin(val ->path[i], "/");
 		str = ft_strjoin(temp, cmd);
 		free(temp);
 		stat(str, &buf);
@@ -53,7 +53,7 @@ int	ft_access_check(char *cmd, t_pipex *val, int check)
 		val->exe_path[check] = NULL;
 		return (0);
 	}
-	while (val -> ev[i])
+	while (val->path && val -> path[i])
 	{
 		if (ft_access_check2(cmd, val, check, i) == 0)
 			return (0);
@@ -124,28 +124,28 @@ void	ft_sep_temp(t_pipex *val, int i)
 	val->cmd[i][etc] = NULL;
 }
 
-void	ft_av_parsing(t_input *input, t_pipex *val)
+void	ft_av_parsing(t_pipex *val)
 {
 	int	ac_temp;
 	int	i;
 	char	*temp;
 
 	i = 0;
-	ac_temp = input->ac;
+	ac_temp = val->ac;
 	while (ac_temp > 0)
 	{
-		if (ft_strncmp(input->av[i + val->check], "awk ", 4) == 0 || \
-				ft_strncmp(input->av[i + val->check], "sed ", 4) == 0)
+		if (ft_strncmp(val->av[i + val->check], "awk ", 4) == 0 || \
+				ft_strncmp(val->av[i + val->check], "sed ", 4) == 0)
 		{
-			val -> temp[i] = ft_split(input->av[i], '\'');
+			val->temp[i] = ft_split(val->av[i], '\'');
 			temp = val->temp[i][0];
-			val -> temp[i][0] = ft_strtrim(temp, " ");
+			val->temp[i][0] = ft_strtrim(temp, " ");
 			free(temp);
 			ft_sep_temp(val, i);
 		}
 		else
 		{
-			val -> temp[i] = ft_split(input->av[i + val->check], ' ');
+			val -> temp[i] = ft_split(val->av[i + val->check], ' ');
 			ft_sep_temp(val, i);
 		}
 		i++;
@@ -171,6 +171,5 @@ char	**ft_ev_parsing(char **enpv)
 			return (line);
 		}
 	}
-	perror("ENV PATH error ");
-	return (0);
+	return (NULL);
 }

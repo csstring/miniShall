@@ -11,7 +11,6 @@
 #include "env.h"
 #include "quote.h"
 
-//ctrl_c 시그널 핸들링
 void	sig_handler(int signum)
 {
 	if (signum != SIGINT)
@@ -22,6 +21,7 @@ void	sig_handler(int signum)
 	rl_replace_line("", 1);
 	rl_redisplay();
 }
+
 void	dfl_handler(int sigquit)
 {
 	write(1,"111",3);
@@ -33,8 +33,7 @@ void	dfl_handler(int sigquit)
 	rl_replace_line("", 1);
 	rl_redisplay();
 }
-//return : 입력한 명령어 한줄
-//prompt 출력
+
 char	*ft_prompt(void)
 {
 	char	*line;
@@ -89,7 +88,7 @@ int	main(int ac, char **av, char **envp)
 			continue ;
 		}
 		quote_line(&line, exit_code, env);
-		ft_pipe(line, envp, env, &exit_code);
+		ft_pipe(line, &envp, env, &exit_code);
 		signal(SIGINT, sig_handler);
 		free(line);
 //		system("leaks minishell");
