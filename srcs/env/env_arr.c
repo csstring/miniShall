@@ -6,12 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:45:04 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 17:53:13 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 20:47:10 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include <stdio.h>
+#include "minishell.h"
 
 char **edit_env_arr(t_env *head, char ***env_arr)
 {

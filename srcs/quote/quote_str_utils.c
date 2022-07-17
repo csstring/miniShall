@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quote_str_utill.c                                  :+:      :+:    :+:   */
+/*   quote_str_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:18:15 by soo               #+#    #+#             */
-/*   Updated: 2022/07/14 16:30:15 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 20:47:26 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "quote.h"
-#include "env.h"
+#include "minishell.h"
 //!!널가드 추가
 
 char	*arrange_str_cpy(char *ret, char *s1, char *s2, char *s3)

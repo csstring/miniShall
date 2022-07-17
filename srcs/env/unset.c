@@ -6,12 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:08:34 by soo               #+#    #+#             */
-/*   Updated: 2022/07/15 21:35:50 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 20:47:21 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "env.h"
+#include "minishell.h"
 
 // t_env	*find_unset_env(t_env **env, char *del)
 // {

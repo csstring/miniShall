@@ -6,14 +6,12 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:06:58 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 16:28:05 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/17 20:48:42 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_H
 # define ENV_H
-
-# include "../srcs/libft/libft.h"
 
 typedef struct s_env
 {
@@ -29,9 +27,10 @@ t_env	*init_env(t_env *head, char **envp);
 t_env	*split_env(t_env *head, char **envp);
 
 //call_env
-void	print_env(t_env	*head);
+int	print_env(t_env	*head, char **line);
 
 //export
+int	find_equal(char *line);
 int	export(t_env *head, char **line, char ***env_arr);
 int	export_env(t_env *head, char **line, char ***env_arr);
 t_env	*dup_env(t_env **now, t_env **new);
@@ -42,8 +41,10 @@ void	print_export(t_env *head);
 char **add_env_arr(t_env *head, char ***env_arr);
 
 //utils
+char	*find_env(t_env *env, char *str);
 char	**line_format(char *line, char *cmd);
 int	format_check(char *line);
+int	find_first_ch(char *line, char c); // quote랑 중복이니까 헤더 합칠 때 지우기
 void str_free(char **str);
 
 //unset

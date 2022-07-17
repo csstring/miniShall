@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   quote.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: songmin <autumninmoon@gmail.com>           +#+  +:+       +#+        */
+/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:13:38 by soo               #+#    #+#             */
-/*   Updated: 2022/07/13 18:38:42 by songmin          ###   ########.fr       */
+/*   Updated: 2022/07/17 20:47:33 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "quote.h"
-#include "env.h"
+#include "minishell.h"
 //!!널가드 추가
 
 int	del_quote_cnt(char *origin, char c)

@@ -103,8 +103,8 @@ int ft_taptosp(char *str)
 int	ft_in_built(t_pipex *val, t_input *input, int i, t_env *env)
 {
 	(void)input;
-//	if (!ft_strncmp(str, "cd", 3))
-//		chdir_main( ,&(input->ev), val->cmd[i][1]);
+	if (!ft_strncmp(val->cmd[i][0], "cd", 3))
+		return (chdir_main(env, val->cmd[i], &(input->ev)));
 	if (!ft_strncmp(val->cmd[i][0], "echo", 5))
 		return ((int)ft_echo(val, i));
 	else if (!ft_strncmp(val->cmd[i][0], "pwd", 4))
@@ -114,7 +114,7 @@ int	ft_in_built(t_pipex *val, t_input *input, int i, t_env *env)
 	else if (!ft_strncmp(val->cmd[i][0], "unset", 6))
 		return (unset(&env, val->cmd[i], &(input->ev)));
 	else if (!ft_strncmp(val->cmd[i][0], "env", 4))
-		print_env(env);
+		return (print_env(env, val->cmd[i]));
 	return (0);
 //	else if (!ft_strncmp(str, "exit", 5))
 }
