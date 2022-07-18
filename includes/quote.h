@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:14:19 by soo               #+#    #+#             */
-/*   Updated: 2022/07/14 20:15:07 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/18 17:40:38 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	del_quote_cnt(char *origin, char c);
 char	*del_quote(char *origin, char c);
 char	*s_line_handler(char **line, char **origin);
 char	*d_line_handler(t_env *env, char **line, char **origin, int exit_code);
+char	*no_quote_line(char **origin);
+char	*no_quote_line_handler(char **origin, int exit_code, t_env *env);
 char	*quote_line(char **origin, int exit_code, t_env *env);
 
 //quote_utils

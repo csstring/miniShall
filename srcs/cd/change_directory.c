@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 22:09:39 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/18 15:37:10 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,13 @@ char	*check_cd_home(t_env *env, char *line, char **home)
 	return (*home);
 }
 
+void	cd_hyphen(t_env *env, char **before, char **after, int *ret)
+{
+	*before = find_env(env, "PWD");
+	*after = find_env(env, "OLDPWD");
+	*ret = chdir(*after);
+}
 
-void	cd_hi
 int chdir_main(t_env *env, char **line, char ***env_arr)
 {
 	char	*home;
@@ -70,11 +75,7 @@ int chdir_main(t_env *env, char **line, char ***env_arr)
 
 	home = NULL;
 	if (!ft_strncmp(line[1], "-", 2))
-	{
-		before = find_env(env, "PWD");
-		after = find_env(env, "OLDPWD");
-		ret = chdir(after);
-	}
+		cd_hyphen(env, &before, &after, &ret);
 	else
 	{
 		before = getcwd(NULL, 0);

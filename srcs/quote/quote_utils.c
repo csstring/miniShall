@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:07:16 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 20:47:03 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/18 20:41:29 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*find_exit_code(char **sep_str, int exit_code)
 	char	*str_exit_code;
 
 	i = 0;
-
 	while (sep_str[0][i + 1])
 	{
 		if (sep_str[0][i] == '$' && sep_str[0][i + 1] == '?')
