@@ -1,32 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_trans_quot.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/18 14:15:39 by schoe             #+#    #+#             */
+/*   Updated: 2022/07/18 14:28:47 by schoe            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex_bonus.h"
 
-/*static int	ft_get_size(char c, char *line)
+static void	ft_re_trans_quot2_1(char *line, char *temp, int *i, int *k)
 {
-	int	i;
+	while (line[*i] != '\'' && line[*i] != '\"' && line[*i] != '\0' \
+			&& line[*i] != ' ')
+				temp[(*k)++] = line[(*i)++];
+}
 
-	i = 0;
-	while (line[i])
-	{
-	
-		if (line[i] == c)
-			return (i);
-		i++;
-	}
-	return (0);
-}*/
-
-static char	*ft_re_trans_quot2(char *line)
+static char	*ft_re_trans_quot2(char *line, int k, int i)
 {
 	char	*temp;
 	char	c;
-	int		i;
-	int		k;
 
-	k = 0;
-	i = 0;
 	temp = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
-	while (line[i] != '\'' && line[i] != '\"' && line[i] != '\0' && line[i] != ' ')
-				temp[k++] = line[i++];
+	ft_re_trans_quot2_1(line, temp, &i, &k);
 	while (line[i])
 	{
 		if (line[i] == '\'' || line[i] == '\"')
@@ -35,8 +34,7 @@ static char	*ft_re_trans_quot2(char *line)
 			while (line[i] != c)
 				temp[k++] = line[i++];
 			i++;
-			while (line[i] != '\'' && line[i] != '\"' && line[i] != '\0' && line[i] != ' ')
-				temp[k++] = line[i++];
+			ft_re_trans_quot2_1(line, temp, &i, &k);
 			if (line[i] == '\'' || line [i] == '\"')
 				continue ;
 			else if (line[i] == ' ' || line[i] == '\0')
@@ -48,16 +46,12 @@ static char	*ft_re_trans_quot2(char *line)
 	return (temp);
 }
 
-char	*ft_re_trans_quot(char *line, int index)
+char	*ft_re_trans_quot(char *line, int index, int k, int j)
 {
 	int		count;
 	int		i;
-	int		k;
-	int		j;
 
-	k = 0;
 	i = 0;
-	j = 0;
 	count = 0;
 	while (line[i])
 	{
@@ -70,7 +64,7 @@ char	*ft_re_trans_quot(char *line, int index)
 				k++;
 			count--;
 			if (index == count)
-				return (ft_re_trans_quot2(&line[j]));
+				return (ft_re_trans_quot2(&line[j], 0, 0));
 			i = k;
 		}
 		i++;
@@ -78,18 +72,14 @@ char	*ft_re_trans_quot(char *line, int index)
 	return (0);
 }
 
-char	*ft_trans_quot(char *line)
+char	*ft_trans_quot(char *line, int i, int k)
 {
-	int		i;
 	int		count;
 	char	*temp;
 	char	c;
-	int		k;
 
 	temp = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
 	count = -1;
-	k = 0;
-	i = 0;
 	while (line[i])
 	{
 		if (line[i] == '\'' || line[i] == '\"')

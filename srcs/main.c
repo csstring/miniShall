@@ -1,38 +1,16 @@
-#include <signal.h>
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <termios.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/18 14:48:53 by schoe             #+#    #+#             */
+/*   Updated: 2022/07/18 19:38:32 by schoe            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex_bonus.h"
-#include "libft.h"
-#include "cd.h"
-#include "env.h"
-#include "quote.h"
-
-void	sig_handler(int signum)
-{
-	if (signum != SIGINT)
-		return ;
-	write(STDOUT_FILENO, "\n", 1);
-	if (rl_on_new_line() == -1)
-		exit(1);
-	rl_replace_line("", 1);
-	rl_redisplay();
-}
-
-void	dfl_handler(int sigquit)
-{
-	write(1,"111",3);
-	if (sigquit != SIGQUIT)
-		return ;
-	write(STDOUT_FILENO, "^\\Quit: 3\n", 10);
-	if (rl_on_new_line() == -1)
-		exit(1);
-	rl_replace_line("", 1);
-	rl_redisplay();
-}
 
 char	*ft_prompt(void)
 {
@@ -53,44 +31,42 @@ char	*ft_prompt(void)
 	}
 }
 
-void	ft_tc(int ac, char **av)
-{
-	struct termios termios;
-
-    tcgetattr(STDIN_FILENO, &termios);
-    termios.c_lflag &= ~ECHOCTL;
-    tcsetattr(STDIN_FILENO, TCSANOW, &termios);
-	(void)ac;
-	(void)av;
-}
-
-int	main(int ac, char **av, char **envp)
+void	main_loop(t_env *env, char **envp, int exit_code)
 {
 	char	*line;
-	int	exit_code;	
-	t_env *env;
 
-	env = (t_env *)malloc(sizeof(t_env));
-	ft_memset(env, 0, sizeof(t_env));
-	init_env(env, envp);
-	ft_tc(ac, av);
-    exit_code = 0;
-	signal(SIGINT, sig_handler);
 	while (1)
 	{
 		signal(SIGQUIT, SIG_IGN);
 		line = ft_prompt();
-		if (ft_syntax_check(&line, &exit_code) || ft_taptosp(line))
+		exit_code = ft_syntax_check(&line);
+		if (exit_code || ft_taptosp(line))
 		{
+			g_exit = exit_code;
 //			signal(SIGQUIT, SIG_DFL);
 			signal(SIGINT, sig_handler);
 			free(line);
 			continue ;
 		}
+		exit_code = g_exit;
 		quote_line(&line, exit_code, env);
-		ft_pipe(line, &envp, env, &exit_code);
+		ft_pipe(line, &envp, env);
 		signal(SIGINT, sig_handler);
 		free(line);
 //		system("leaks minishell");
 	}
+}
+
+int	main(int ac, char **av, char **envp)
+{
+	t_env *env;
+
+	g_exit = 0;
+	env = (t_env *)malloc(sizeof(t_env));
+	ft_memset(env, 0, sizeof(t_env));
+	init_env(env, envp);
+	ft_tc(ac, av);
+	signal(SIGINT, sig_handler);
+	main_loop(env, envp, 0);
+	return (g_exit);
 }

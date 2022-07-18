@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 22:09:39 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/18 12:00:19 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*check_cd_home(t_env *env, char *line, char **home)
 }
 
 
-void	cd_hi
+//void	cd_hi
 int chdir_main(t_env *env, char **line, char ***env_arr)
 {
 	char	*home;

@@ -1,10 +1,16 @@
-#include "pipex_bonus.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_dire_file.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/18 12:05:31 by schoe             #+#    #+#             */
+/*   Updated: 2022/07/18 12:05:50 by schoe            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_error_print(char *str, int no)
-{
-	ft_eprintf("ss_shell: %s: %s\n", str,strerror(no));
-	exit(no);
-}
+#include "pipex_bonus.h"
 
 static int	ft_here_doc(int index, int count)
 {
@@ -60,6 +66,7 @@ int	ft_dire_in(char **indirec, int index)
 	}
 	return (-1);
 }
+
 static int	ft_out_dire_check(char *outdirec, int check)
 {
 	struct stat	buf;

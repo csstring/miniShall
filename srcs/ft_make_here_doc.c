@@ -5,10 +5,7 @@ static char	*ft_doc_prompt(void)
 	char	*line;
 
 	line = readline("> ");
-	if (line == NULL)
-		return (line);
-	else
-		return (line);
+	return (line);
 }
 
 static void	ft_make_here_doc2(char *indirec, int index, int count)
@@ -22,6 +19,7 @@ static void	ft_make_here_doc2(char *indirec, int index, int count)
 	name = ft_strjoin("...", temp);
 	free(temp);
 	fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	free(name);
 	while (1)
 	{
 		line = ft_doc_prompt();
@@ -35,8 +33,6 @@ static void	ft_make_here_doc2(char *indirec, int index, int count)
 		write(fd, line, ft_strlen(line));
 		free(line);
 	}
-	free(line);
-	free(temp);
 	close(fd);
 }
 
