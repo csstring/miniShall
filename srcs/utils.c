@@ -6,11 +6,17 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:09:59 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 20:46:55 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/18 12:05:15 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	ft_error_print(char *str, int no)
+{
+	ft_eprintf("ss_shell: %s: %s\n", str,strerror(no));
+	exit(no);
+}
 
 char	**line_format(char *line, char *cmd)
 {

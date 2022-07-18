@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/18 15:37:10 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/18 21:30:02 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ void	cd_hyphen(t_env *env, char **before, char **after, int *ret)
 	*ret = chdir(*after);
 }
 
+<<<<<<< HEAD
+=======
+//void	cd_hi
+>>>>>>> 97bf123037f1e22e7081ff75d3d67d3d3d490492
 int chdir_main(t_env *env, char **line, char ***env_arr)
 {
 	char	*home;

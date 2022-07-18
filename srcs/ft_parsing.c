@@ -6,15 +6,13 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:16 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/17 20:09:02 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/18 12:12:53 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 #include "libft.h"
-#include <stdio.h>
-#include <sys/stat.h>
-#include <string.h>
+
 static int	ft_access_check2(char *cmd, t_pipex *val, int check, int i)
 {
 	char	*temp;
@@ -43,6 +41,7 @@ static int	ft_access_check2(char *cmd, t_pipex *val, int check, int i)
 	}
 	return (1);
 }
+
 int	ft_access_check(char *cmd, t_pipex *val, int check)
 {
 	int		i;
@@ -61,67 +60,6 @@ int	ft_access_check(char *cmd, t_pipex *val, int check)
 	}
 	val->exe_path[check] = NULL;
 	return (0);
-}
-static int	ft_find_symbol(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '(')
-			return (str[i + 1]);
-		i++;
-	}
-	return (0);
-}
-void	ft_sep_temp(t_pipex *val, int i)
-{
-	int	k;
-	int	in;
-	int	out;
-	int	etc;
-
-	k = 0;
-	val->indirec[i] = (char **)malloc(sizeof(char *) * (ft_direc_count(val->temp[i], "<") * 2 + 1));
-	val->outdirec[i] = (char **)malloc(sizeof(char *) * (ft_direc_count(val->temp[i], ">") * 2 + 1));
-	while (val->temp[i][k])
-		k++;
-	val->cmd[i] = (char **)malloc(sizeof(char *) * (k + 1));
-	val->indirec[i][ft_direc_count(val->temp[i], "<")*2] = NULL;
-	val->outdirec[i][ft_direc_count(val->temp[i], ">")*2] = NULL;
-	k = 0;
-	in = 0;
-	out = 0;
-	etc = 0;
-	while (val->temp[i][k])
-	{//printf("parsing%s\n", val->temp[i][k]);
-		if (val->temp[i][k][0] == '<')
-		{
-			if (val->temp[i][k++][1] == '<')
-				val->indirec[i][in++] = "<<";
-			else
-				val->indirec[i][in++] = "<";
-			val->indirec[i][in++] = val->temp[i][k];
-		}
-		else if (val->temp[i][k][0] == '>')
-		{
-			if (val->temp[i][k++][1] == '>')
-				val->outdirec[i][out++] = ">>";
-			else
-				val->outdirec[i][out++] = ">";
-			val->outdirec[i][out++] = val->temp[i][k];
-		}
-		else if (ft_find_symbol(val->temp[i][k]))
-		{
-			val->cmd[i][etc++] = ft_re_trans_quot(val->line, ft_find_symbol(val->temp[i][k]));
-			free(val->temp[i][k]);
-		}
-		else
-			val->cmd[i][etc++] = val->temp[i][k];
-		k++;
-	}
-	val->cmd[i][etc] = NULL;
 }
 
 void	ft_av_parsing(t_pipex *val)

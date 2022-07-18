@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:52:52 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/17 21:20:53 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/18 11:59:47 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_in_out_close(int	infile, int outfile)
 	}
 }
 
-void	ft_cmd_end(int i, t_pipex *val)
+void	ft_cmd_end(int i, t_pipex *val, t_env *env)
 {	
 	int	infile;
 	int	outfile;
@@ -39,13 +39,14 @@ void	ft_cmd_end(int i, t_pipex *val)
 	if (infile == -1)
 		dup2(val->fd[i - 1][P_R], STDIN_FILENO);
 	close(val->fd[i - 1][P_R]);
-	ft_error_check_exit(i, val);
-	//	if (ft_built_check)
-//		exit (ft_in_built());
+	if (ft_built_check(val->cmd[i][0]))
+		exit(ft_in_built(val, i, env));
+	else
+		ft_error_check_exit(i, val);
 	execve(val->exe_path[i], val->cmd[i], val->ev);
 }
 
-void	ft_cmd_mid1(int i, t_pipex *val)
+void	ft_cmd_mid1(int i, t_pipex *val, t_env *env)
 {
 	int	infile;
 	int	outfile;
@@ -62,13 +63,14 @@ void	ft_cmd_mid1(int i, t_pipex *val)
 	if (outfile == -1)
 		dup2(val->fd[i][P_W], STDOUT_FILENO);
 	close(val->fd[i][P_W]);
-	ft_error_check_exit(i, val);
-	//	if (ft_built_check)
-//		exit (ft_in_built());
+	if (ft_built_check(val->cmd[i][0]))
+		exit(ft_in_built(val, i, env));
+	else
+		ft_error_check_exit(i, val);
 	execve(val -> exe_path[i], val -> cmd[i], val->ev);
 }
 
-void	ft_cmd_start(int i, t_pipex *val)
+void	ft_cmd_start(int i, t_pipex *val, t_env *env)
 {
 	int	infile;
 	int	outfile;
@@ -85,9 +87,10 @@ void	ft_cmd_start(int i, t_pipex *val)
 		}
 	}
 	ft_in_out_close(infile, outfile);
-	ft_error_check_exit(i, val);
-//	if (ft_built_check)
-//		exit (ft_in_built());
+	if (ft_built_check(val->cmd[i][0]))
+		exit(ft_in_built(val, i, env));
+	else
+		ft_error_check_exit(i, val);
 	execve(val -> exe_path[i], val -> cmd[i], val->ev);
 }
 

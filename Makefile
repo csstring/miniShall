@@ -18,7 +18,8 @@ READLINE_INC	= -I /Users/$(USER)/.brew/opt/readline/include
 SRCS = srcs/main.c srcs/ft_cmd.c srcs/ft_parsing.c srcs/ft_error_check.c \
 	   srcs/ft_pipe_utils.c srcs/ft_pipe.c srcs/ft_dire_file.c srcs/ft_utils.c \
 	   srcs/ft_echo.c srcs/ft_free.c srcs/ft_syntax.c srcs/ft_trans_quot.c \
-	   srcs/ft_make_here_doc.c srcs/ft_error_check_exit.c
+	   srcs/ft_make_here_doc.c srcs/ft_error_check_exit.c srcs/ft_parsing_sep.c \
+	   srcs/ft_syntax_utils.c srcs/ft_builtin.c srcs/ft_main_utils.c
 
 S_SRCS = srcs/cd/change_directory.c \
 		srcs/env/call_env.c \
