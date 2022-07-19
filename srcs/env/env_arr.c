@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:45:04 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 20:47:10 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/19 14:54:09 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char **edit_env_arr(t_env *head, char ***env_arr)
 	int		size;
 	t_env	*now;
 	char	**new;
-
+	static int free_count;
+	
+	free_count++;
 	size = 0;
 	now = head;
 	while (now)
@@ -52,7 +54,8 @@ char **edit_env_arr(t_env *head, char ***env_arr)
 		free(tmp);
 		now = now->next;
 	}
-	//str_free(*env_arr);
+	if (free_count != 1)
+		str_free(*env_arr);
 	*env_arr = new;
 	return (*env_arr);
 }
