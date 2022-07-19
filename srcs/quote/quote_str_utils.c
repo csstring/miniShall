@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:18:15 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 16:24:36 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/19 17:52:18 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ char	*arrange_str(char **sep_str, char **line, int *p, int *idx)
 		sep_str[1][0] == '\0')
 	{
 		printf("??\n");
-		split_line[0] = ft_strndup(*line, p[0] - 1);
-		split_line[1] = ft_strdup(&line[0][p[1] + 2]);
+		split_line[0] = ft_strndup(*line, p[0]);
+		split_line[1] = ft_strdup(&line[0][p[1] + 1]);
 	}
 	else
 	{

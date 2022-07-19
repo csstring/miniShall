@@ -6,11 +6,12 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:12:50 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 16:32:36 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 17:33:47 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
+
 static void	ft_print_exit(char *cmd, char *str, int exit_code)
 {
 	ft_eprintf("ss_shell: exit: %s: %s\n", cmd, str);
@@ -26,7 +27,8 @@ static void	ft_check_numeric(char *cmd)
 		ft_print_exit(cmd, "numeric argument required", 255);
 	while (cmd[i])
 	{
-		if ((cmd[i] >= 48 && cmd[i] <= 57) || cmd[i] == 32 || (cmd[i] >= 8 && cmd[i] <=12))
+		if ((cmd[i] >= 48 && cmd[i] <= 57) || \
+				cmd[i] == 32 || (cmd[i] >= 8 && cmd[i] <= 12))
 		{
 			i++;
 			continue ;
@@ -48,9 +50,11 @@ int	ft_exit(char **cmd)
 	ft_check_numeric(cmd[1]);
 	while (cmd[i])
 		i++;
-	if (i > 1)
+	if (i > 2)
 	{
-		ft_eprintf("ss_shell: exit: too many arguments");
+		ft_eprintf("ss_shell: exit: too many arguments\n");
 		return (1);
 	}
+	exit_code = (unsigned char)ft_atoi(cmd[1]);
+	exit((int)exit_code);
 }
