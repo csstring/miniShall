@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:08 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 12:06:25 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/18 20:25:34 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_check_file(int i, t_pipex *val)
 	{
 		if (val->cmd[i][0][j] == '/')
 		{
-			ft_eprintf("ss_shell: %s: %s\n", val->av[i + val->check], \
+			ft_eprintf("ss_shell: %s: %s\n", val->cmd[i], \
 					strerror(2));
 			return (2);
 		}
@@ -50,7 +50,7 @@ static int	ft_check_dir(int i, t_pipex *val)
 			return (0);
 		j++;
 	}
-	ft_eprintf("ss_shell: %s: %s\n", val->av[i + val->check], \
+	ft_eprintf("ss_shell: %s: %s\n", val->cmd[i], \
 			strerror(21));
 	return (21);
 }
@@ -68,7 +68,7 @@ int	ft_error_check(int i, t_pipex *val)
 		if (ft_check_file(i, val))
 			return (2);
 		ft_eprintf("ss_shell: %s: command not found\n", \
-				val->av[i + val->check]);
+				val->cmd[i]);
 		return (127);
 	}
 	return (0);

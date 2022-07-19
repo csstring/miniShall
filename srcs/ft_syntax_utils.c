@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:10:04 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 16:43:46 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 15:01:12 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	ft_bracket_check(char *line, int check)
 	return (0);
 }
 
-int ft_blank_check(char *line, char *c)
+int	ft_blank_check(char *line, char *c)
 {
 	char	**str;
 	int		i;
@@ -106,17 +106,17 @@ int ft_blank_check(char *line, char *c)
 	{
 		if (str[i][0] == c[0] && str[i + 1] == NULL)
 		{
-			ft_free2((void *)str);
+			ft_free2((void **)str);
 			return (ft_print_syntax("newline", 258));
 		}
 		if (str[i][0] == c[0] && \
 				(str[i + 1][0] == c[0] || str[i + 1][0] == '|'))
 		{
-			ft_free2((void *)str);
+			ft_free2((void **)str);
 			return (ft_print_syntax(c, 258));
 		}
 		i++;
 	}
-	ft_free2((void *)str);// 자리이동
+	ft_free2((void **)str);
 	return (0);
 }

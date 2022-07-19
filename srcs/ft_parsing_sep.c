@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 12:11:57 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 14:27:45 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 14:57:54 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_find_symbol(char *str)
 
 static void	ft_sep_init(t_pipex *val, int i)
 {
-	int k;
+	int	k;
 
 	k = 0;
 	val->indirec[i] = (char **)malloc(sizeof(char *) * \
@@ -38,8 +38,8 @@ static void	ft_sep_init(t_pipex *val, int i)
 	while (val->temp[i][k])
 		k++;
 	val->cmd[i] = (char **)malloc(sizeof(char *) * (k + 1));
-	val->indirec[i][ft_direc_count(val->temp[i], "<")*2] = NULL;
-	val->outdirec[i][ft_direc_count(val->temp[i], ">")*2] = NULL;
+	val->indirec[i][ft_direc_count(val->temp[i], "<") * 2] = NULL;
+	val->outdirec[i][ft_direc_count(val->temp[i], ">") * 2] = NULL;
 }
 
 static void	ft_sep_temp2(char **temp, char **direc, int *k, int *in_out)
@@ -47,31 +47,27 @@ static void	ft_sep_temp2(char **temp, char **direc, int *k, int *in_out)
 	if (temp[*k][0] == '<')
 	{
 		if (temp[(*k)++][1] == '<')
-			direc[(*in_out)++] = "<<";
+			direc[(*in_out)++] = ft_strdup("<<");
 		else
-			direc[(*in_out)++] = "<";
-		direc[(*in_out)++] = temp[*k];
+			direc[(*in_out)++] = ft_strdup("<");
+		direc[(*in_out)++] = ft_strdup(temp[*k]);
 	}
 	else if (temp[*k][0] == '>')
 	{
 		if (temp[(*k)++][1] == '>')
-			direc[(*in_out)++] = ">>";
+			direc[(*in_out)++] = ft_strdup(">>");
 		else
-			direc[(*in_out)++] = ">";
-		direc[(*in_out)++] = temp[*k];
+			direc[(*in_out)++] = ft_strdup(">");
+		direc[(*in_out)++] = ft_strdup(temp[*k]);
 	}
 }
 
-void	ft_sep_temp(t_pipex *val, int i)
+void	ft_sep_temp(t_pipex *val, int i, int in, int out)
 {
 	int	k;
-	int	in;
-	int	out;
 	int	etc;
 
 	k = 0;
-	in = 0;
-	out = 0;
 	etc = 0;
 	ft_sep_init(val, i);
 	while (val->temp[i][k])
@@ -84,10 +80,9 @@ void	ft_sep_temp(t_pipex *val, int i)
 		{
 			val->cmd[i][etc++] = ft_re_trans_quot(val->line, \
 					ft_find_symbol(val->temp[i][k]), 0, 0);
-			free(val->temp[i][k]);
 		}
 		else
-			val->cmd[i][etc++] = val->temp[i][k];
+			val->cmd[i][etc++] = ft_strdup(val->temp[i][k]);
 		k++;
 	}
 	val->cmd[i][etc] = NULL;

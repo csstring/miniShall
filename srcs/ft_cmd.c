@@ -6,13 +6,13 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:52:52 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 11:59:47 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 15:04:19 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-static void	ft_in_out_close(int	infile, int outfile)
+static void	ft_in_out_close(int infile, int outfile)
 {
 	if (infile != -1)
 	{
@@ -32,7 +32,6 @@ void	ft_cmd_end(int i, t_pipex *val, t_env *env)
 	int	outfile;
 
 	close(val->fd[i - 1][P_W]);
-	waitpid(val->pid, NULL, 0);
 	infile = ft_dire_in(val->indirec[i], i);
 	outfile = ft_dire_out(val->outdirec[i]);
 	ft_in_out_close(infile, outfile);
@@ -53,7 +52,6 @@ void	ft_cmd_mid1(int i, t_pipex *val, t_env *env)
 
 	close(val->fd[i - 1][P_W]);
 	close(val->fd[i][P_R]);
-	waitpid(val->pid, NULL, 0);
 	infile = ft_dire_in(val->indirec[i], i);
 	outfile = ft_dire_out(val->outdirec[i]);
 	ft_in_out_close(infile, outfile);

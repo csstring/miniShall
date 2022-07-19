@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 12:05:31 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 12:05:50 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 14:48:56 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int	ft_out_dire_check(char *outdirec, int check)
 	if (buf.st_mode & S_IFREG)
 	{
 		if (!(buf.st_mode & S_IWUSR))
-			ft_error_print(outdirec,1);
+			ft_error_print(outdirec, 1);
 		else
 		{
 			if (check == 1)

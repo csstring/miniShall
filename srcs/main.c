@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:48:53 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 19:38:32 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 16:29:09 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	main_loop(t_env *env, char **envp, int exit_code)
 		if (exit_code || ft_taptosp(line))
 		{
 			g_exit = exit_code;
-//			signal(SIGQUIT, SIG_DFL);
 			signal(SIGINT, sig_handler);
 			free(line);
 			continue ;
@@ -59,7 +58,7 @@ void	main_loop(t_env *env, char **envp, int exit_code)
 
 int	main(int ac, char **av, char **envp)
 {
-	t_env *env;
+	t_env	*env;
 
 	g_exit = 0;
 	env = (t_env *)malloc(sizeof(t_env));

@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:09:13 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 19:35:19 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 16:27:36 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <signal.h>
 # include <sys/stat.h>
+# include <sys/errno.h>
 # include <string.h>
 #include <fcntl.h>
 # include "libft.h"
@@ -43,11 +44,8 @@ typedef struct s_pipex
 	char	***cmd;
 	char	**exe_path;
 	char	*line;
-	char	***trans;
-	pid_t	pid;
 	int		**fd;
 	int		end;
-	int		check;
 	int		ac;
 	char	**av;
 	char	**ev;
@@ -65,7 +63,7 @@ void	ft_error_check_exit(int i, t_pipex *val);
 //ft_parsing
 int		ft_access_check(char *cmd, t_pipex *val, int check);
 void	ft_av_parsing(t_pipex *val);
-void	ft_sep_temp(t_pipex *val, int i);
+void	ft_sep_temp(t_pipex *val, int i, int in, int out);
 char	**ft_ev_parsing(char **enpv);
 //ft_pipex
 void	ft_make_pipe(t_pipex *val);
@@ -102,8 +100,8 @@ void	ft_free3(void ***temp);
 void	ft_pipe_clear(t_pipex *val);
 //echo,pwd
 void	ft_print_echo(t_pipex *val, int i, int k, int check);
-void	*ft_echo(t_pipex *val, int i);
-void	*ft_pwd(void);
+int		ft_echo(t_pipex *val, int i);
+int		ft_pwd(void);
 //trans_quot
 char	*ft_trans_quot(char *line, int i, int k);
 char	*ft_re_trans_quot(char *line, int index, int k, int j);

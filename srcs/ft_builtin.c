@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:29:34 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 14:48:58 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 15:11:34 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ int	ft_in_built(t_pipex *val, int i, t_env *env)
 {
 	if (!ft_strncmp(val->cmd[i][0], "cd", 3))
 		return (chdir_main(env, val->cmd[i], val->origin_ev));
-	if (!ft_strncmp(val->cmd[i][0], "echo", 5))
-		return ((int)ft_echo(val, i));
+	else if (!ft_strncmp(val->cmd[i][0], "echo", 5))
+		return (ft_echo(val, i));
 	else if (!ft_strncmp(val->cmd[i][0], "pwd", 4))
-		ft_pwd();
+		return (ft_pwd());
 	else if (!ft_strncmp(val->cmd[i][0], "export", 7))
 		return (export(env, val->cmd[i], val->origin_ev));
 	else if (!ft_strncmp(val->cmd[i][0], "unset", 6))
 		return (unset(&env, val->cmd[i], val->origin_ev));
 	else if (!ft_strncmp(val->cmd[i][0], "env", 4))
 		return (print_env(env, val->cmd[i]));
+	else if (!ft_strncmp(val->cmd[i][0], "exit", 5))
+		return (0);
 	return (0);
-//	else if (!ft_strncmp(str, "exit", 5))
 }

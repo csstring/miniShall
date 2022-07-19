@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/19 15:01:51 by schoe             #+#    #+#             */
+/*   Updated: 2022/07/19 15:02:37 by schoe            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex_bonus.h"
 
 static int	ft_add_space2(char *src, char c, char *str)
 {
 	int		i;
-	int 	k;
+	int		k;
 	char	temp;
 
 	i = 0;
@@ -18,7 +30,7 @@ static int	ft_add_space2(char *src, char c, char *str)
 				str[k++] = src[i++];
 		}
 		str[k] = src[i];
-		if (src[i] == c && src[i+1] != c)
+		if (src[i] == c && src[i + 1] != c)
 			str[++k] = ' ';
 		k++;
 		i++;
@@ -73,7 +85,7 @@ void	ft_tolower_str(char *str)
 	}
 }
 
-int ft_taptosp(char *str)
+int	ft_taptosp(char *str)
 {
 	int	i;
 

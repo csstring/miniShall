@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:15:39 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 14:28:47 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 15:01:46 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*ft_trans_quot(char *line, int i, int k)
 			c = line[i++];
 			while (line[i] != c)
 				i++;
-			temp[++k] = count--;	
+			temp[++k] = count--;
 		}
 		else
 			temp[k] = line[i];

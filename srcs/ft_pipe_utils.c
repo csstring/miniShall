@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:22 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 17:53:12 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 16:32:34 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_make_pipe(t_pipex *val)
 
 	i = 0;
 	ac_temp = val->ac;
-	val->fd = (int **)malloc(sizeof(int *) * ac_temp - 1);
+	val->fd = (int **)malloc(sizeof(int *) * ac_temp);
 	if (val->fd == NULL)
 		exit(1);
 	while (ac_temp - 1 > 0)
@@ -35,6 +35,7 @@ void	ft_make_pipe(t_pipex *val)
 		i++;
 		ac_temp--;
 	}
+	val->fd[i] = NULL;
 	val->end = i;
 }
 
@@ -89,7 +90,7 @@ void	ft_close_fd(pid_t pid, t_pipex *val, int i)
 		ft_close_fd2(val, i, end_temp);
 }
 
-int	ft_exit_sig(st)
+int	ft_exit_sig(int st)
 {
 	if (st >= 256)
 		return (st >> 8 & 0x000000ff);

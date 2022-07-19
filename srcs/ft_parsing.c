@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:16 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 12:12:53 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 14:58:29 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static int	ft_access_check2(char *cmd, t_pipex *val, int check, int i)
 {
-	char	*temp;
-	char	*str;
+	char		*temp;
+	char		*str;
 	struct stat	buf;
 
 	ft_memset(&buf, 0, sizeof(buf));
@@ -66,26 +66,13 @@ void	ft_av_parsing(t_pipex *val)
 {
 	int	ac_temp;
 	int	i;
-	char	*temp;
 
 	i = 0;
 	ac_temp = val->ac;
 	while (ac_temp > 0)
 	{
-		if (ft_strncmp(val->av[i + val->check], "awk ", 4) == 0 || \
-				ft_strncmp(val->av[i + val->check], "sed ", 4) == 0)
-		{
-			val->temp[i] = ft_split(val->av[i], '\'');
-			temp = val->temp[i][0];
-			val->temp[i][0] = ft_strtrim(temp, " ");
-			free(temp);
-			ft_sep_temp(val, i);
-		}
-		else
-		{
-			val -> temp[i] = ft_split(val->av[i + val->check], ' ');
-			ft_sep_temp(val, i);
-		}
+		val -> temp[i] = ft_split(val->av[i], ' ');
+		ft_sep_temp(val, i, 0, 0);
 		i++;
 		ac_temp--;
 	}

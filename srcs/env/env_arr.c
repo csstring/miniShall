@@ -6,7 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:45:04 by soo               #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2022/07/19 14:54:09 by soo              ###   ########.fr       */
+=======
+/*   Updated: 2022/07/19 16:46:45 by schoe            ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +63,3 @@ char **edit_env_arr(t_env *head, char ***env_arr)
 	*env_arr = new;
 	return (*env_arr);
 }
-

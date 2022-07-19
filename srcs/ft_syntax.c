@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_syntax.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/19 14:59:55 by schoe             #+#    #+#             */
+/*   Updated: 2022/07/19 15:00:46 by schoe            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex_bonus.h"
 
 int	ft_indirec_syntax_check(char *line)
@@ -58,7 +70,7 @@ int	ft_outdirec_syntax_check(char *line)
 
 int	ft_syntax_check(char **line)
 {
-	int temp;
+	int	temp;
 
 	temp = ft_quot_check(*line, 0, 0);
 	if (temp)

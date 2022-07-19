@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:51:46 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 19:35:55 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 14:50:48 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	dfl_handler(int sigquit)
 
 void	ft_tc(int ac, char **av)
 {
-	struct termios termios;
+	struct termios	termios;
 
-    tcgetattr(STDIN_FILENO, &termios);
-    termios.c_lflag &= ~ECHOCTL;
-    tcsetattr(STDIN_FILENO, TCSANOW, &termios);
+	tcgetattr(STDIN_FILENO, &termios);
+	termios.c_lflag &= ~ECHOCTL;
+	tcsetattr(STDIN_FILENO, TCSANOW, &termios);
 	(void)ac;
 	(void)av;
 }
