@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:01:51 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 15:02:37 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:28:45 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 static int	ft_add_space2(char *src, char c, char *str)
 {

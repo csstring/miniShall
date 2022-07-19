@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:15:39 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 15:01:46 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:28:40 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 static void	ft_re_trans_quot2_1(char *line, char *temp, int *i, int *k)
 {

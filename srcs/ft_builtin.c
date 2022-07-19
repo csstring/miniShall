@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:29:34 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 17:25:24 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:27:04 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 int	ft_built_check(char *str)
 {
