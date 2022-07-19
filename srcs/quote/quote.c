@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:13:38 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 16:30:15 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/19 17:45:52 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,20 @@ char	*no_quote_line_handler(char **origin, int exit_code, t_env *env)
 
 char	*s_line_handler(char **origin)
 {
-	char *ret;
+	//char *ret;
 
-	ret = del_quote(*origin,'\'');
-	if (!ret)
-		return (*origin);
-	free(*origin);
-	*origin = ft_strdup(ret);
-	free(ret);
+	//ret = del_quote(*origin,'\'');
+	//if (!ret)
+	//	return (*origin);
+	//free(*origin);
+	//*origin = ft_strdup(ret);
+	//free(ret);
 	return (*origin);
 }
 
 char	*d_line_handler(t_env *env, char **origin, int exit_code)
 {
-	char	*ret;
+//	char	*ret;
 	int		dollar;
 	int		idx;
 
@@ -80,12 +80,12 @@ char	*d_line_handler(t_env *env, char **origin, int exit_code)
 	idx = 0;
 	while (dollar--)
 		substitution_env(env, origin, exit_code, &idx, &dollar);
-	ret = del_quote(*origin, '\"');
-	if (!ret)
-		return (*origin);
-	free(*origin);
-	*origin = ft_strdup(ret);
-	free(ret);
+//	ret = del_quote(*origin, '\"');
+//	if (!ret)
+//		return (*origin);
+//	free(*origin);
+//	*origin = ft_strdup(ret);
+//	free(ret);
 	return (*origin);
 }
 
