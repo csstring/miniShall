@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:09:59 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 18:35:12 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 21:03:41 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,14 @@
 
 void	ft_error_print(char *str, int no)
 {
-	ft_eprintf("ss_shell: %s: %s\n", str,strerror(no));
+	ft_eprintf("ss_shell: %s: %s\n", str, strerror(no));
 	exit(no);
-}
-
-char	**line_format(char *line, char *cmd)
-{
-	char	**str;
-	char	**ret;
-	int		i;
-
-	i = 1;
-	ret = (char **)malloc(sizeof(char *) * 3);
-	str = ft_split(line, ' ');
-	if (!ft_strncmp(str[0], cmd, ft_strlen(cmd + 1)))
-		ret[0] = ft_strdup(str[0]);
-	else
-		return (NULL); // error command not found
-	if (line[ft_strlen(ret[0])] == '\0')
-		ret[1] = ft_strdup("");
-	else
-		ret[1] = ft_strdup(&line[ft_strlen(ret[0]) + 1]);
-	ret[2] = NULL;
-	str_free(str);
-	return (ret);
 }
 
 int	format_check(char *line)
 {
 	int		e_flag;
-	
+
 	e_flag = 0;
 	if (line[0] >= '0' && line[0] <= '9')
 		return (0);
@@ -52,7 +30,8 @@ int	format_check(char *line)
 	e_flag = find_equal(line);
 	if (e_flag)
 	{
-		if (find_first_ch(line, ' ') != -1 && (find_first_ch(line, ' ') < find_first_ch(line, '=')))
+		if (find_first_ch(line, ' ') != -1 && \
+			(find_first_ch(line, ' ') < find_first_ch(line, '=')))
 			return (0);
 	}
 	else
@@ -77,9 +56,9 @@ int	find_first_ch(char *line, char c)
 	return (-1);
 }
 
-void str_free(char **str)
+void	str_free(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

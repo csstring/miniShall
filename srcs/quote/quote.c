@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:13:38 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 17:45:52 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 20:58:39 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,33 @@ char	*no_quote_line(char **origin)
 	return (*origin);
 }
 
+int	s_line_handler(char *line, int *idx, int *dollar_cnt)
+{
+	int	i;
+	int	cnt;
+	int	dollar;
+	int	dollar_cnt_tmp;
+
+	i = 0;
+	cnt = 0;
+	dollar = find_first_c(&line[*idx], '$') + *idx;
+	dollar_cnt_tmp = 0;
+	while (i != dollar - 1)
+		if (line[i++] == '\'')
+			++cnt;
+	if (line[dollar - 1] == '\'' && cnt % 2 == 0)
+	{
+		*idx = find_first_c(&line[dollar], '\'') + dollar;
+		while (i < *idx)
+			if (line[i++] == '$' && *dollar_cnt)
+				++dollar_cnt_tmp;
+		if (dollar_cnt_tmp > 1)
+			*dollar_cnt -= (dollar_cnt_tmp - 1);
+		return (0);
+	}
+	return (1);
+}
+
 char	*no_quote_line_handler(char **origin, int exit_code, t_env *env)
 {
 	int	dollar;
@@ -51,26 +78,16 @@ char	*no_quote_line_handler(char **origin, int exit_code, t_env *env)
 		return (NULL);
 	idx = 0;
 	while (dollar--)
-		substitution_env(env, origin, exit_code, &idx, &dollar);
-	return (*origin);
-}
-
-char	*s_line_handler(char **origin)
-{
-	//char *ret;
-
-	//ret = del_quote(*origin,'\'');
-	//if (!ret)
-	//	return (*origin);
-	//free(*origin);
-	//*origin = ft_strdup(ret);
-	//free(ret);
+	{
+		if (!s_line_handler(*origin, &idx, &dollar))
+			continue ;
+		substitution_env(env, origin, exit_code, &idx);
+	}
 	return (*origin);
 }
 
 char	*d_line_handler(t_env *env, char **origin, int exit_code)
 {
-//	char	*ret;
 	int		dollar;
 	int		idx;
 
@@ -79,22 +96,19 @@ char	*d_line_handler(t_env *env, char **origin, int exit_code)
 		return (NULL);
 	idx = 0;
 	while (dollar--)
-		substitution_env(env, origin, exit_code, &idx, &dollar);
-//	ret = del_quote(*origin, '\"');
-//	if (!ret)
-//		return (*origin);
-//	free(*origin);
-//	*origin = ft_strdup(ret);
-//	free(ret);
+	{
+		if (!s_line_handler(*origin, &idx, &dollar))
+			continue ;
+		substitution_env(env, origin, exit_code, &idx);
+	}
 	return (*origin);
 }
 
 char	*quote_line(char **origin, int exit_code, t_env *env)
 {
-	if ((find_first_c(*origin, '\"') == -1) && (find_first_c(*origin, '\'') == -1))
+	if ((find_first_c(*origin, '\"') == -1) && \
+		(find_first_c(*origin, '\'') == -1))
 		no_quote_line(origin);
 	d_line_handler(env, origin, exit_code);
-	s_line_handler(origin);
-	printf("origin : %s\n", *origin);
 	return (*origin);
 }

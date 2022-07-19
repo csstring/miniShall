@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:20:10 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 16:22:35 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/19 21:00:22 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ char	*find_exit_code(char **sep_str, int exit_code)
 			free(sep_str[1]);
 			sep_str[1] = ft_strdup(str_exit_code);
 			free(str_exit_code);
-			break;
+			break ;
 		}
 		++i;
 	}
 	return (sep_str[1]);
 }
 
-char *find_env(t_env *env, char *str)
+char	*find_env(t_env *env, char *str)
 {
 	t_env	*now;
 	char	*sub_str;
@@ -42,15 +42,26 @@ char *find_env(t_env *env, char *str)
 	while (now->next)
 	{
 		if (!ft_strncmp(now->key, str, ft_strlen(str) + 1))
-			{
-				if (now->unset_flag)
-					break;
-				sub_str = ft_strdup(now->value);
-				return (sub_str);
-			}
+		{
+			if (now->unset_flag)
+				break ;
+			sub_str = ft_strdup(now->value);
+			return (sub_str);
+		}
 		now = now->next;
 	}
 	return (ft_strdup(""));
+}
+
+char	**refind_exit_code(char **sep_str, char **line, int *p, int exit_code)
+{
+	if (sep_str[1][0] == '\0')
+	{
+		free(sep_str[0]);
+		sep_str[0] = ft_strndup(&line[0][p[0]], p[1] - p[0]);
+		find_exit_code(sep_str, exit_code);
+	}
+	return (sep_str);
 }
 
 int	find_first_c(char *line, char c)

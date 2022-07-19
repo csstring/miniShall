@@ -6,12 +6,12 @@
 #    By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 15:13:23 by soo               #+#    #+#              #
-#    Updated: 2022/06/22 17:57:09 by soo              ###   ########.fr        #
+#    Updated: 2022/07/19 20:30:19 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror -c 
 
 NAME = libft.a
 

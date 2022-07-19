@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 12:03:14 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/19 20:56:38 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ static int print_error(char *line)
 
 char	*check_cd_home(t_env *env, char *line, char **home)
 {
+	t_env	*now;
+
+	now = env;
 	if (!line)
 	{
 		*home = no_arg_cd_home(env);
@@ -55,7 +58,17 @@ char	*check_cd_home(t_env *env, char *line, char **home)
 			return (NULL);
 	}
 	else if (!ft_strncmp(line, "~", 2))
-		*home = ft_strdup("/Users/soo"); // /Users/schoe
+	{
+		while(now)
+		{
+			if (!ft_strncmp(now->key, "HOME", 5))
+			{
+				*home = ft_strdup(now->value);
+				return (*home);
+			}
+			now = now->next;
+		}
+	}
 	return (*home);
 }
 
@@ -66,7 +79,6 @@ void	cd_hyphen(t_env *env, char **before, char **after, int *ret)
 	*ret = chdir(*after);
 }
 
-//void	cd_hi
 int chdir_main(t_env *env, char **line, char ***env_arr)
 {
 	char	*home;
