@@ -6,11 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:52:52 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 15:04:19 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:27:24 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 static void	ft_in_out_close(int infile, int outfile)
 {

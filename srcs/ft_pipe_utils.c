@@ -6,11 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:22 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 16:32:34 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:28:26 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 void	ft_make_pipe(t_pipex *val)
 {
