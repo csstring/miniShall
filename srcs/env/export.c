@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:26:02 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 20:47:16 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/19 21:04:50 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ int	export_env(t_env *head, char **line, char ***env_arr)
 // int	export(t_env *head, char *line)
 int	export(t_env *head, char **line, char ***env_arr)
 {
+	printf("%s\n%s\n", line[0], line[1]);
 	// char	**str;
 
 	// str = line_format(line, "export");

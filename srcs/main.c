@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:48:53 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 16:29:09 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 20:36:32 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	main_loop(t_env *env, char **envp, int exit_code)
 		ft_pipe(line, &envp, env);
 		signal(SIGINT, sig_handler);
 		free(line);
-//		system("leaks minishell");
+		// system("leaks minishell | grep 'leaks'");
 	}
 }
 

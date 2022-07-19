@@ -1,5 +1,5 @@
 
-CFLAGS = -Wall -Werror -Wextra -Iincludes -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -Iincludes
 CC = cc
 
 # brew info readline
@@ -27,7 +27,6 @@ S_SRCS = srcs/cd/change_directory.c \
 		srcs/env/export.c \
 		srcs/env/unset.c \
 		srcs/quote/quote.c \
-		srcs/quote/del_quote.c \
 		srcs/quote/quote_utils.c \
 		srcs/quote/quote_str_utils.c \
 		srcs/quote/quote_find_utils.c \

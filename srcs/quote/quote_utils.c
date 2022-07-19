@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:07:16 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 16:21:04 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/19 21:01:36 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,33 @@ int	cnt_c(char *line, char c)
 		++i;
 	}
 	return (cnt);
+}
+
+int	find_end(char *line)
+{
+	int	dollar;
+	int	space;
+	int	quote;
+
+	dollar = find_first_c(line, '$');
+	space = find_first_c(line, ' ');
+	quote = find_first_c(line, '\"');
+	if (dollar == -1 && space == -1 && quote == -1)
+		return (ft_strlen(line));
+	if ((quote != -1) && (space == -1 || (quote < space)) && \
+		(dollar == -1 || quote < dollar))
+		return (quote);
+	else if ((dollar != -1) && (quote == -1 || (dollar < quote)) && \
+		(space == -1 || dollar < space))
+		return (dollar);
+	return (space);
+}
+
+char	**undefine_key(t_env *env, char **sep_str, char **line, int *p)
+{
+	free(sep_str[0]);
+	sep_str[0] = ft_strndup(&line[0][p[0] + 1], p[1] - p[0] - 1);
+	free(sep_str[1]);
+	sep_str[1] = find_env(env, sep_str[0]);
+	return (sep_str);
 }
