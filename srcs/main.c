@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:48:53 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 17:53:27 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:28:51 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 char	*ft_prompt(void)
 {

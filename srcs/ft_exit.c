@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:12:50 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 17:33:47 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:27:48 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 static void	ft_print_exit(char *cmd, char *str, int exit_code)
 {

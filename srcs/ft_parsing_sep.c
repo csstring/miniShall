@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 12:11:57 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 14:57:54 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:28:16 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 static int	ft_find_symbol(char *str)
 {

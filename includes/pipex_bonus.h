@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:09:13 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 17:24:37 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:26:52 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <termios.h>
-#include <stdlib.h>
-#include <signal.h>
 # include <sys/stat.h>
 # include <sys/errno.h>
 # include <string.h>
-#include <fcntl.h>
-# include "libft.h"
-#include "env.h"
-#include "cd.h"
-#include "quote.h"
+# include <fcntl.h>
 
 int	g_exit;
 

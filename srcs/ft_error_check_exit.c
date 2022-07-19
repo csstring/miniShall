@@ -6,12 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:08 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/18 12:06:33 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:27:44 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
-#include "libft.h"
+#include "minishell.h"
 
 static void	ft_check_file(int i, t_pipex *val)
 {
