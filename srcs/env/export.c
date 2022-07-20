@@ -6,41 +6,20 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:26:02 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 21:04:50 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 15:47:26 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-//!!널가드
-void	print_export(t_env *head)
-{
-	t_env	*now;
-	
-	now = head;
-	while (now->next)
-	{
-		if (!now->unset_flag)
-		{
-			if (now->value_flag == 1)
-				ft_printf("declare -x %s\n", now->key);
-			else if(!ft_strncmp(now->value, "", 1))
-				ft_printf("declare -x %s=\"\"\n", now->key);
-			else 
-				ft_printf("declare -x %s=\"%s\"\n", now->key, now->value);
-		}
-		now = now->next;
-	}
-}
 
-int	find_equal(char *line)
+t_env	*dup_env(t_env **now, t_env **new)
 {
-	while(*line)
-	{
-		if (*line == '=')
-			return (1);
-		++line;
-	}
-	return (0);
+	(*now)->unset_flag = 0;
+	(*now)->value_flag = (*new)->value_flag;
+	free((*now)->value);
+	(*now)->value = ft_strdup((*new)->value);
+	free_node(new);
+	return (*now);
 }
 
 t_env	*split_equal(char *line, t_env *new)
@@ -59,27 +38,13 @@ t_env	*split_equal(char *line, t_env *new)
 	return (new);
 }
 
-t_env	*dup_env(t_env **now, t_env **new)
-{
-	(*now)->unset_flag = 0;
-	(*now)->value_flag = (*new)->value_flag;
-	free((*now)->value);
-	(*now)->value = ft_strdup((*new)->value);
-	free((*new)->key);
-	free((*new)->value);
-	free(*new);
-	return (*now);
-}
-
 t_env	*add_env(t_env *head, t_env *new)
 {
 	t_env	*now;
 
 	if (!ft_strncmp(new->key, "_", 2))
 	{
-		free(new->key);
-		free(new->value);
-		free(new);
+		free_node(&new);
 		return (head);
 	}
 	now = head;
@@ -105,11 +70,9 @@ t_env	*add_env(t_env *head, t_env *new)
 int	make_new_env(t_env *head, char **split_blank)
 {
 	t_env	*new;
-	// char	**split_blank;
 	int		i;
 	int		flag;
 
-	// split_blank = ft_split(line, ' ');
 	i = 1;
 	flag = 0;
 	while (split_blank[i])
@@ -130,7 +93,6 @@ int	make_new_env(t_env *head, char **split_blank)
 		}
 		add_env(head, split_equal(split_blank[i++], new));
 	}
-	//str_free(split_blank);
 	return (flag);
 }
 
@@ -138,35 +100,13 @@ int	export_env(t_env *head, char **line, char ***env_arr)
 {
 	if (!line)
 		return (1);
-	if (!line[1]) // cmd가 인자없이 export만 들어왔을 경우
+	if (!line[1])
 	{
-		// str_free(line);
 		print_export(head);
 		return (0);
 	}
 	if (make_new_env(head, line) > 0)
-	{
-		//str_free(line);
 		return (1);
-	}
-	//str_free(line);
 	edit_env_arr(head, env_arr);
 	return (0);
-}
-
-// int	export(t_env *head, char *line)
-int	export(t_env *head, char **line, char ***env_arr)
-{
-	printf("%s\n%s\n", line[0], line[1]);
-	// char	**str;
-
-	// str = line_format(line, "export");
-	// if (!str)
-	// {
-	// 	ft_putstr_fd("command not found\n", 2);
-	// 	return (1);
-	// }
-	// while (*line)
-	// 	printf("%s\n", *line++);
-	return (export_env(head, line, env_arr));
 }

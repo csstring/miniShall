@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   call_env.c                                         :+:      :+:    :+:   */
+/*   env_export_print.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:59:16 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 20:47:00 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 15:28:36 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,24 @@ int	print_env(t_env	*head, char **line)
 		now = now->next;
 	}
 	return (0);
+}
+
+void	print_export(t_env *head)
+{
+	t_env	*now;
+	
+	now = head;
+	while (now->next)
+	{
+		if (!now->unset_flag)
+		{
+			if (now->value_flag == 1)
+				ft_printf("declare -x %s\n", now->key);
+			else if(!ft_strncmp(now->value, "", 1))
+				ft_printf("declare -x %s=\"\"\n", now->key);
+			else 
+				ft_printf("declare -x %s=\"%s\"\n", now->key, now->value);
+		}
+		now = now->next;
+	}
 }

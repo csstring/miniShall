@@ -6,21 +6,17 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:45:04 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 19:34:23 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 16:21:58 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char **edit_env_arr(t_env *head, char ***env_arr)
+static int	cnt_size(t_env *head)
 {
-	char	*tmp;
-	int		size;
 	t_env	*now;
-	char	**new;
-	static int free_count;
-	
-	free_count++;
+	int		size;
+
 	size = 0;
 	now = head;
 	while (now)
@@ -34,10 +30,18 @@ char **edit_env_arr(t_env *head, char ***env_arr)
 			continue ;
 		}
 		now = now->next;
-		++size;	}
-	new = (char **)malloc(sizeof(char *) * (size + 1));
-	new[size] = NULL;
-	size = 0;
+		++size;
+	}
+	return (size);
+}
+
+char	**make_new_arr(char **new, t_env *head)
+{
+	t_env	*now;
+	int		i;
+	char	*tmp;
+
+	i = 0;
 	now = head;
 	while (now)
 	{
@@ -50,10 +54,24 @@ char **edit_env_arr(t_env *head, char ***env_arr)
 			continue ;
 		}
 		tmp = ft_strjoin(now->key, "=");
-		new[size++] = ft_strjoin(tmp, now->value);
+		new[i++] = ft_strjoin(tmp, now->value);
 		free(tmp);
 		now = now->next;
 	}
+	return (new);
+}
+
+char	**edit_env_arr(t_env *head, char ***env_arr)
+{
+	int		size;
+	char	**new;
+	static int free_count;
+	
+	free_count++;
+	size = cnt_size(head);
+	new = (char **)malloc(sizeof(char *) * (size + 1));
+	new[size] = NULL;
+	make_new_arr(new, head);
 	if (free_count != 1)
 		str_free(*env_arr);
 	*env_arr = new;

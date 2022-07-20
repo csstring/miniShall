@@ -6,15 +6,12 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:14:19 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 14:30:41 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 16:14:06 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef QUOTE_H
 # define QUOTE_H
-
-# include "../srcs/libft/libft.h"
-# include "env.h"
 
 //quote
 int		s_line_handler(char *line, int *idx, int *dollar_cnt);

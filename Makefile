@@ -1,5 +1,5 @@
 
-CFLAGS = -Wall -Werror -Wextra -Iincludes
+CFLAGS = -Wall -Werror -Wextra -Iincludes -g -fsanitize=address
 CC = cc
 
 # brew info readline
@@ -23,15 +23,18 @@ SRCS = srcs/main.c srcs/ft_cmd.c srcs/ft_parsing.c srcs/ft_error_check.c \
 	   srcs/ft_exit.c
 
 S_SRCS = srcs/cd/change_directory.c \
-		srcs/env/call_env.c \
+		srcs/cd/cd_utils.c \
 		srcs/env/env.c \
-		srcs/env/export.c \
 		srcs/env/unset.c \
+		srcs/env/export.c \
+		srcs/env/env_arr.c \
+		srcs/env/export_utils.c \
+		srcs/env/print_env_export.c \
 		srcs/quote/quote.c \
 		srcs/quote/quote_utils.c \
 		srcs/quote/quote_str_utils.c \
 		srcs/quote/quote_find_utils.c \
-		srcs/utils.c srcs/env/env_arr.c \
+		srcs/utils.c \
 
 LIBFT = libft.a
 
