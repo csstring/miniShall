@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:13:38 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 17:37:58 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 19:43:37 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ int	s_line_handler(char *line, int *idx, int *dollar_cnt)
 	cnt = 0;
 	dollar = find_first_c(&line[*idx], '$') + *idx;
 	dollar_cnt_tmp = 0;
-	while (line[i] && i != dollar - 1)
+	while (dollar > 0 && line[i] && i != dollar)
+	{
 		if (line[i++] == '\'')
 			++cnt;
-	if (dollar && line[dollar - 1] == '\'' && cnt % 2 == 0)
+	}
+	if (dollar > 0 && cnt > 0 && cnt % 2 == 1)
 	{
 		*idx = find_first_c(&line[dollar], '\'') + dollar;
 		while (i < *idx)
