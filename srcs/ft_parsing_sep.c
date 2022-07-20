@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 12:11:57 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 21:08:51 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 18:44:07 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,13 @@ static void	ft_sep_init(t_pipex *val, int i)
 			(ft_direc_count(val->temp[i], "<") * 2 + 1));
 	val->outdirec[i] = (char **)malloc(sizeof(char *) * \
 			(ft_direc_count(val->temp[i], ">") * 2 + 1));
+	if (val->indirec[i] == NULL || val->outdirec[i] == NULL)
+		exit(12);
 	while (val->temp[i][k])
 		k++;
 	val->cmd[i] = (char **)malloc(sizeof(char *) * (k + 1));
+	if (val->cmd[i] == NULL)
+		exit(12);
 	val->indirec[i][ft_direc_count(val->temp[i], "<") * 2] = NULL;
 	val->outdirec[i][ft_direc_count(val->temp[i], ">") * 2] = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:01:51 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 18:28:45 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 18:41:05 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	*ft_add_space(char *src, char c, int i, int k)
 		i++;
 	}
 	str = (char *)malloc(sizeof(char) * (ft_strlen(src) + k + 1));
+	if (!str)
+		exit(12);
 	k = 0;
 	k = ft_add_space2(src, c, str);
 	str[k] = '\0';
