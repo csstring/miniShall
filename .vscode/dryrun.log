@@ -1,5 +1,44 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/soo/soo/ss501'
-make: Nothing to be done for `all'.
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/main.c -o srcs/main.o
+ 
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_cmd.c -o srcs/ft_cmd.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_parsing.c -o srcs/ft_parsing.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_error_check.c -o srcs/ft_error_check.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_pipe_utils.c -o srcs/ft_pipe_utils.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_pipe.c -o srcs/ft_pipe.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_dire_file.c -o srcs/ft_dire_file.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_utils.c -o srcs/ft_utils.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_echo.c -o srcs/ft_echo.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_free.c -o srcs/ft_free.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_syntax.c -o srcs/ft_syntax.o
+ 
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_trans_quot.c -o srcs/ft_trans_quot.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_make_here_doc.c -o srcs/ft_make_here_doc.o
+ 
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_error_check_exit.c -o srcs/ft_error_check_exit.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_parsing_sep.c -o srcs/ft_parsing_sep.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_syntax_utils.c -o srcs/ft_syntax_utils.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_builtin.c -o srcs/ft_builtin.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_main_utils.c -o srcs/ft_main_utils.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/ft_exit.c -o srcs/ft_exit.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/cd/change_directory.c -o srcs/cd/change_directory.o
+ 
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/cd/cd_utils.c -o srcs/cd/cd_utils.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/env/env.c -o srcs/env/env.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/env/unset.c -o srcs/env/unset.o
+ 
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/env/export.c -o srcs/env/export.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/env/env_arr.c -o srcs/env/env_arr.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/env/export_utils.c -o srcs/env/export_utils.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/env/print_env_export.c -o srcs/env/print_env_export.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/quote/quote.c -o srcs/quote/quote.o
+ 
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/quote/quote_utils.c -o srcs/quote/quote_utils.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/quote/quote_str_utils.c -o srcs/quote/quote_str_utils.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/quote/quote_find_utils.c -o srcs/quote/quote_find_utils.o
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -I /Users/soo/.brew/opt/readline/include -c srcs/utils.c -o srcs/utils.o
+make -C ./libft
+cc -Wall -Werror -Wextra -Iincludes -g -fsanitize=address -o minishell srcs/main.o srcs/ft_cmd.o srcs/ft_parsing.o srcs/ft_error_check.o srcs/ft_pipe_utils.o srcs/ft_pipe.o srcs/ft_dire_file.o srcs/ft_utils.o srcs/ft_echo.o srcs/ft_free.o srcs/ft_syntax.o srcs/ft_trans_quot.o srcs/ft_make_here_doc.o srcs/ft_error_check_exit.o srcs/ft_parsing_sep.o srcs/ft_syntax_utils.o srcs/ft_builtin.o srcs/ft_main_utils.o srcs/ft_exit.o srcs/cd/change_directory.o srcs/cd/cd_utils.o srcs/env/env.o srcs/env/unset.o srcs/env/export.o srcs/env/env_arr.o srcs/env/export_utils.o srcs/env/print_env_export.o srcs/quote/quote.o srcs/quote/quote_utils.o srcs/quote/quote_str_utils.o srcs/quote/quote_find_utils.o srcs/utils.o libft.a -I /Users/soo/.brew/opt/readline/include -lreadline -L /Users/soo/.brew/opt/readline/lib
 make: Leaving directory `/Users/soo/soo/ss501'
  
