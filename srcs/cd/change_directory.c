@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 18:38:31 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 21:09:32 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,14 @@ int	chdir_execve(t_env *env, char **line, char **before, char **home)
 	int	ret;
 
 	*before = getcwd(NULL, 0);
-	*home = check_cd_home(env, line[1], home);
+	if (!line[1])
+	{
+		no_arg_cd_home(env, home);
+		if (!*home)
+			return (1);
+	}
+	else
+		*home = check_cd_home(env, line[1], home);
 	if (!*home)
 		ret = chdir(line[1]);
 	else

@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:07:48 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 20:19:49 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 21:09:17 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	cd_hyphen(t_env *env, char **before, char **after, int *ret)
 	*ret = chdir(*after);
 }
 
-char	*ckeck_home_path(char **home, char *line)
+char	*check_home_path(char **home, char *line)
 {
 	char	*ret;
 
@@ -34,18 +34,23 @@ char	*ckeck_home_path(char **home, char *line)
 	return (*home);
 }
 
+char	*no_arg_cd_home(t_env *env, char **home)
+{
+	*home = find_env(env, "HOME");
+	if (home[0][0] == '\0')
+	{
+		ft_putstr_fd("ss_shell: cd: HOME not set\n", 2);
+		return (NULL);
+	}
+	return (*home);
+}
+
 char	*check_cd_home(t_env *env, char *line, char **home)
 {
 	t_env	*now;
 
 	now = env;
-	if (!line)
-	{
-		*home = no_arg_cd_home(env);
-		if (!*home)
-			return (NULL);
-	}
-	else if (line[0] == '~')
+	if (line && line[0] == '~')
 	{
 		while (now)
 		{
@@ -56,20 +61,7 @@ char	*check_cd_home(t_env *env, char *line, char **home)
 			}
 			now = now->next;
 		}
+		check_home_path(home, line);
 	}
-	ckeck_home_path(home, line);
 	return (*home);
-}
-
-char	*no_arg_cd_home(t_env *env)
-{
-	char	*home_path;
-
-	home_path = find_env(env, "HOME");
-	if (home_path[0] == '\0')
-	{
-		ft_putstr_fd("ss_shell: cd: HOME not set\n", 2);
-		return (NULL);
-	}
-	return (home_path);
 }
