@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:29:34 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 15:11:34 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:27:04 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 int	ft_built_check(char *str)
 {
@@ -40,6 +40,6 @@ int	ft_in_built(t_pipex *val, int i, t_env *env)
 	else if (!ft_strncmp(val->cmd[i][0], "env", 4))
 		return (print_env(env, val->cmd[i]));
 	else if (!ft_strncmp(val->cmd[i][0], "exit", 5))
-		return (0);
+		return (ft_exit(val->cmd[i]));
 	return (0);
 }

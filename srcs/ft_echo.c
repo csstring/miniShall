@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 14:49:06 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 15:10:22 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:27:34 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 void	ft_print_echo(t_pipex *val, int i, int k, int check)
 {

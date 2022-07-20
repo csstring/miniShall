@@ -6,11 +6,11 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 12:05:31 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 14:48:56 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:27:29 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "minishell.h"
 
 static int	ft_here_doc(int index, int count)
 {

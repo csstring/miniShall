@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:09:13 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 16:27:36 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/19 18:26:52 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <termios.h>
-#include <stdlib.h>
-#include <signal.h>
 # include <sys/stat.h>
 # include <sys/errno.h>
 # include <string.h>
-#include <fcntl.h>
-# include "libft.h"
-#include "env.h"
-#include "cd.h"
-#include "quote.h"
+# include <fcntl.h>
 
 int	g_exit;
 
@@ -98,10 +92,11 @@ int 	ft_blank_check(char *line, char *c);
 void	ft_free2(void **temp);
 void	ft_free3(void ***temp);
 void	ft_pipe_clear(t_pipex *val);
-//echo,pwd
+//echo,pwd,exit
 void	ft_print_echo(t_pipex *val, int i, int k, int check);
 int		ft_echo(t_pipex *val, int i);
 int		ft_pwd(void);
+int		ft_exit(char **str);
 //trans_quot
 char	*ft_trans_quot(char *line, int i, int k);
 char	*ft_re_trans_quot(char *line, int index, int k, int j);
