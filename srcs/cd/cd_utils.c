@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:07:48 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 16:25:57 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 17:54:57 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*check_cd_home(t_env *env, char *line, char **home)
 	}
 	else if (!ft_strncmp(line, "~", 2))
 	{
-		while(now)
+		while (now)
 		{
 			if (!ft_strncmp(now->key, "HOME", 5))
 			{
@@ -57,4 +57,3 @@ char	*no_arg_cd_home(t_env *env)
 	}
 	return (home_path);
 }
-

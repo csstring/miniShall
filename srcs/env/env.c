@@ -6,13 +6,13 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:02:34 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 15:45:49 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 17:56:00 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static	t_env *get_last(t_env *head)
+static	t_env	*get_last(t_env *head)
 {
 	while (head->next)
 		head = head->next;
@@ -30,9 +30,9 @@ t_env	*head_node_init(t_env **head, t_env **new)
 
 t_env	*init_env(t_env *head, char **envp)
 {
-	t_env *new;
-	char **split_equal;
-	int i;
+	t_env	*new;
+	char	**split_equal;
+	int		i;
 
 	i = 0;
 	while (envp[i])

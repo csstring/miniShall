@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:45:04 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 16:21:58 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 17:56:27 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	cnt_size(t_env *head)
 			if (now->next)
 				now = now->next;
 			else
-				break;
+				break ;
 			continue ;
 		}
 		now = now->next;
@@ -50,7 +50,7 @@ char	**make_new_arr(char **new, t_env *head)
 			if (now->next)
 				now = now->next;
 			else
-				break;
+				break ;
 			continue ;
 		}
 		tmp = ft_strjoin(now->key, "=");
@@ -63,10 +63,10 @@ char	**make_new_arr(char **new, t_env *head)
 
 char	**edit_env_arr(t_env *head, char ***env_arr)
 {
-	int		size;
-	char	**new;
-	static int free_count;
-	
+	int			size;
+	char		**new;
+	static int	free_count;
+
 	free_count++;
 	size = cnt_size(head);
 	new = (char **)malloc(sizeof(char *) * (size + 1));

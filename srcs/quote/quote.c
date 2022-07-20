@@ -6,12 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:13:38 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 17:33:42 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 17:37:58 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-//!!널가드 추가
 
 int	s_line_handler(char *line, int *idx, int *dollar_cnt)
 {
