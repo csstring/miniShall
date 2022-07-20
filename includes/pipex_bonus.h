@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:09:13 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/20 16:20:36 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 17:52:40 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		ft_direc_count(char **str, char *c);
 void	ft_tolower_str(char *str);
 int		ft_built_check(char *str);
 int		ft_taptosp(char *line);
-int		ft_in_built(t_pipex *val, int i,  t_env *env);
+int		ft_in_built(t_pipex *val, int i, t_env *env);
 //syntax
 int		ft_pass_quot(char *line, int i);
 int		ft_syntax_check(char **line);
@@ -86,7 +86,7 @@ int		ft_print_syntax(char *str, int exit_code);
 int		ft_pass_quot(char *line, int i);
 int		ft_quot_check(char *line, int single_quot, int double_quot);
 int		ft_bracket_check(char *line, int check);
-int 	ft_blank_check(char *line, char *c);
+int		ft_blank_check(char *line, char *c);
 //free
 void	ft_free2(void **temp);
 void	ft_free3(void ***temp);

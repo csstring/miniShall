@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parsing_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:16 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 18:28:08 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 18:14:33 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_access_check2(char *cmd, t_pipex *val, int check, int i)
 	stat(cmd, &buf);
 	if (buf.st_mode & S_IXUSR && buf.st_mode & S_IFREG)
 	{
-		val->exe_path[check] = cmd;
+		val->exe_path[check] = ft_strdup(cmd);
 		return (0);
 	}
 	else

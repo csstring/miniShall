@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:26:02 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 15:47:26 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 17:59:44 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	make_new_env(t_env *head, char **split_blank)
 	{
 		new = (t_env *)malloc(sizeof(t_env));
 		if (!new)
-			return (0); //수정
+			exit (12);
 		ft_memset(new, 0, sizeof(t_env));
 		if (!format_check(split_blank[i]))
 		{

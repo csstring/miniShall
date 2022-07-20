@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_export_print.c                                 :+:      :+:    :+:   */
+/*   print_env_export.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:59:16 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 15:28:36 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 18:00:58 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	print_env(t_env	*head, char **line)
 {
 	t_env	*now;
-	
+
 	if (line[1])
 	{
 		ft_putstr_fd("env: ", 2);
@@ -26,7 +26,7 @@ int	print_env(t_env	*head, char **line)
 	now = head;
 	while (now)
 	{
-		if(!now->value_flag && !now->unset_flag)
+		if (!now->value_flag && !now->unset_flag)
 			ft_printf("%s=%s\n", now->key, now->value);
 		now = now->next;
 	}
@@ -36,7 +36,7 @@ int	print_env(t_env	*head, char **line)
 void	print_export(t_env *head)
 {
 	t_env	*now;
-	
+
 	now = head;
 	while (now->next)
 	{
@@ -44,9 +44,9 @@ void	print_export(t_env *head)
 		{
 			if (now->value_flag == 1)
 				ft_printf("declare -x %s\n", now->key);
-			else if(!ft_strncmp(now->value, "", 1))
+			else if (!ft_strncmp(now->value, "", 1))
 				ft_printf("declare -x %s=\"\"\n", now->key);
-			else 
+			else
 				ft_printf("declare -x %s=\"%s\"\n", now->key, now->value);
 		}
 		now = now->next;

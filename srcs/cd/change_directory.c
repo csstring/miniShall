@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 16:25:57 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 18:13:27 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int	print_error(char *line)
 
 void	change_path(t_env *env, char ***env_arr, char **path, char *key)
 {
-	char **c_path;
-	
+	char	**c_path;
+
 	c_path = (char **)malloc(sizeof(char *) * 3);
 	c_path[2] = NULL;
 	c_path[0] = ft_strdup("export");
@@ -31,6 +31,22 @@ void	change_path(t_env *env, char ***env_arr, char **path, char *key)
 	free(*path);
 	export_env(env, c_path, env_arr);
 	str_free(c_path);
+}
+
+int	chdir_execve(t_env *env, char **line, char **before, char **home)
+{
+	int	ret;
+
+	*before = getcwd(NULL, 0);
+	*home = check_cd_home(env, line[1], home);
+	if (!*home)
+		ret = chdir(line[1]);
+	else
+	{
+		ret = chdir(*home);
+		free(*home);
+	}
+	return (ret);
 }
 
 int	chdir_main(t_env *env, char **line, char ***env_arr)
@@ -45,15 +61,7 @@ int	chdir_main(t_env *env, char **line, char ***env_arr)
 		cd_hyphen(env, &before, &after, &ret);
 	else
 	{
-		before = getcwd(NULL, 0);
-		home = check_cd_home(env, line[1], &home);
-		if (!home)
-			ret = chdir(line[1]);
-		else
-		{
-			ret = chdir(home);
-			free(home);
-		}
+		ret = chdir_execve(env, line, &before, &home);
 		if (ret == -1)
 		{
 			free(before);
