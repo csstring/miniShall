@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 18:13:27 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 18:38:31 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	change_path(t_env *env, char ***env_arr, char **path, char *key)
 	char	**c_path;
 
 	c_path = (char **)malloc(sizeof(char *) * 3);
+	if (!c_path)
+		exit (12);
 	c_path[2] = NULL;
 	c_path[0] = ft_strdup("export");
 	c_path[1] = ft_strjoin(key, *path);

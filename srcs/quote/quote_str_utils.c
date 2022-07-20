@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:18:15 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 18:02:05 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 18:52:17 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,7 @@ char	*substitution_env(t_env *env, char **line, int exit_code, int *idx)
 
 	p[0] = find_first_c(&line[0][*idx], '$') + *idx;
 	p[1] = find_end(&line[0][p[0] + 1]) + p[0];
-	sep_str = (char **)malloc(sizeof(char *) * 3);
-	sep_str[0] = ft_strndup(&line[0][p[0] + 1], p[1] - p[0]);
-	sep_str[1] = find_env(env, sep_str[0]);
-	sep_str[2] = NULL;
+	sep_str = sep_str_init(env, line, p);
 	if (sep_str[1][0] == '\0')
 	{
 		if ((find_first_c(sep_str[0], '\'') != -1))

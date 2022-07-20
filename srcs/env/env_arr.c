@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:45:04 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 17:56:27 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 18:38:26 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ char	**edit_env_arr(t_env *head, char ***env_arr)
 	free_count++;
 	size = cnt_size(head);
 	new = (char **)malloc(sizeof(char *) * (size + 1));
+	if (!new)
+		exit (12);
 	new[size] = NULL;
 	make_new_arr(new, head);
 	if (free_count != 1)

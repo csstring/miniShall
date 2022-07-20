@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:14:19 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 17:50:46 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 18:52:17 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	*quote_line(char **origin, int exit_code, t_env *env);
 int		cnt_c(char *line, char c);
 int		find_end(char *line);
 char	**undefine_key(t_env *env, char **sep_str, char **line, int *p);
+char	**sep_str_init(t_env *env, char **line, int *p);
 
 //quote_find_utils
 char	*find_exit_code(char **sep_str, int exit_code);
