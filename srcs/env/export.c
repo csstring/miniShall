@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:26:02 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 17:59:44 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 19:17:05 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	make_new_env(t_env *head, char **split_blank)
 		ft_memset(new, 0, sizeof(t_env));
 		if (!format_check(split_blank[i]))
 		{
-			ft_putstr_fd("export: '", 2);
+			ft_putstr_fd("ss_shell: export: '", 2);
 			ft_putstr_fd(split_blank[i], 2);
 			ft_putstr_fd("' : not a valid identifier\n", 2);
 			++flag;

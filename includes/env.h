@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:06:58 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 18:48:08 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 20:04:25 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_env	*dup_env(t_env **now, t_env **new);
 //unset
 int		unset_env(t_env **head, char **del, char ***env_arr);
 int		split_del_key(t_env **env, char **split_key);
-t_env	*find_unset_env(t_env **env, char *del);
+int		find_unset_env(t_env **env, char *del);
 
 //utils
 void	ft_error_print(char *str, int no);
