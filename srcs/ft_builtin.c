@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:29:34 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/20 18:45:26 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 20:22:47 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_built_check(char *str)
 {
+	if (str == NULL)
+		return (0);
 	if (ft_strncmp(str, "cd", 3) && \
 			ft_strncmp(str, "echo", 5) && \
 			ft_strncmp(str, "pwd", 4) && \
@@ -27,6 +29,8 @@ int	ft_built_check(char *str)
 
 int	ft_in_built(t_pipex *val, int i, t_env *env)
 {
+	if (val->cmd[i] == NULL)
+		return (0);
 	if (!ft_strncmp(val->cmd[i][0], "cd", 3))
 		return (chdir_main(env, val->cmd[i], val->origin_ev));
 	else if (!ft_strncmp(val->cmd[i][0], "echo", 5))
