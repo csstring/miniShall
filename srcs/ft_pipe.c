@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 21:05:12 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/20 16:13:56 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 18:42:57 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_init(t_pipex *val, char **line, char ***envp, int i)
 	val->temp = (char ***)malloc(sizeof(char **) * (val->ac + 1));
 	if (!val->cmd || !val->exe_path || !val->indirec || \
 			!val->outdirec || !val->temp)
-		exit(1);
+		exit(12);
 	val->cmd[val->ac] = NULL;
 	val->exe_path[val->ac] = NULL;
 	val->indirec[val->ac] = NULL;
