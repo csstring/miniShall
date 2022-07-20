@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:02:34 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 17:56:00 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 18:38:23 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_env	*init_env(t_env *head, char **envp)
 	while (envp[i])
 	{
 		new = (t_env *)malloc(sizeof(t_env));
+		if (!new)
+			exit (12);
 		ft_memset(new, 0, sizeof(t_env));
 		split_equal = ft_split(envp[i++], '=');
 		new->key = ft_strdup(split_equal[0]);
