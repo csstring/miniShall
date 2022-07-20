@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:09:13 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 18:26:52 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 16:20:36 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int		ft_exit_sig(int st);
 //main
 int		ft_pipe(char *line, char ***envp, t_env *env);
 void	sig_handler(int signum);
-void	dfl_handler(int sigquit);
 void	ft_tc(int ac, char **av);
 //etc
 int		ft_dire_in(char **indirec, int index);

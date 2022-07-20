@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:51:46 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 18:27:58 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 16:14:40 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@ void	sig_handler(int signum)
 	rl_replace_line("", 1);
 	rl_redisplay();
 	g_exit = 1;
-}
-
-void	dfl_handler(int sigquit)
-{
-	if (sigquit != SIGQUIT)
-		return ;
-	write(STDOUT_FILENO, "^\\Quit: 3\n", 10);
-	if (rl_on_new_line() == -1)
-		exit(1);
-	rl_replace_line("", 1);
-	rl_redisplay();
 }
 
 void	ft_tc(int ac, char **av)
