@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:22 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 18:28:26 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 18:42:32 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	ft_make_pipe(t_pipex *val)
 	ac_temp = val->ac;
 	val->fd = (int **)malloc(sizeof(int *) * ac_temp);
 	if (val->fd == NULL)
-		exit(1);
+		exit(12);
 	while (ac_temp - 1 > 0)
 	{
 		(val->fd)[i] = (int *)malloc(sizeof(int) * 2);
 		if (val->fd[i] == NULL)
-			exit(1);
+			exit(12);
 		if (pipe(val->fd[i]) == -1)
 		{
 			perror("pipe error ");

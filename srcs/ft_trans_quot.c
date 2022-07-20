@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:15:39 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/20 13:03:18 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 18:42:02 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static char	*ft_re_trans_quot2(char *line, int k, int i)
 	char	c;
 
 	temp = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
+	if (!temp)
+		exit(12);
 	ft_re_trans_quot2_1(line, temp, &i, &k);
 	while (line[i])
 	{
@@ -79,6 +81,8 @@ char	*ft_trans_quot(char *line, int i, int k)
 	char	c;
 
 	temp = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
+	if (!temp)
+		exit(12);
 	count = -1;
 	while (line[i])
 	{

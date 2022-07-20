@@ -19,6 +19,13 @@ char	*ft_prompt(void)
 	}
 }
 
+static void	ft_module(int exit_code, char *line)
+{
+	g_exit = exit_code;
+	signal(SIGINT, sig_handler);
+	free(line);
+}
+
 void	main_loop(t_env *env, char **envp, int exit_code)
 {
 	char	*line;
@@ -30,13 +37,16 @@ void	main_loop(t_env *env, char **envp, int exit_code)
 		exit_code = ft_syntax_check(&line);
 		if (exit_code || ft_taptosp(line))
 		{
-			g_exit = exit_code;
-			signal(SIGINT, sig_handler);
-			free(line);
+			ft_module(exit_code, line);
 			continue ;
 		}
 		exit_code = g_exit;
 		quote_line(&line, exit_code, env);
+		if (line[0] == 0)
+		{	
+			ft_module(exit_code, line);
+			continue ;
+		}
 		ft_pipe(line, &envp, env);
 		signal(SIGINT, sig_handler);
 		free(line);
