@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:15:39 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 18:28:40 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 13:03:18 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_re_trans_quot2_1(char *line, char *temp, int *i, int *k)
 {
 	while (line[*i] != '\'' && line[*i] != '\"' && line[*i] != '\0' \
 			&& line[*i] != ' ')
-				temp[(*k)++] = line[(*i)++];
+		temp[(*k)++] = line[(*i)++];
 }
 
 static char	*ft_re_trans_quot2(char *line, int k, int i)
