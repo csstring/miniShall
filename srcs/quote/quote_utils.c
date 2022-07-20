@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:07:16 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 18:48:03 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 18:52:03 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,13 @@ char	**undefine_key(t_env *env, char **sep_str, char **line, int *p)
 	return (sep_str);
 }
 
-int	*find_p(int **p, char **line, int *idx)
+char	**sep_str_init(t_env *env, char **line, int *p)
 {
-	p[0][0] = find_first_c(&line[0][*idx], '$') + *idx;
-	p[0][1] = find_end(&line[0][p[0][0] + 1]) + p[0];
-	return (*p);
-}
+	char	**sep_str;
 
-char	**sep_str_init(t_env *env, char **sep_str, char **line, int *p)
-{
+	sep_str = (char **)malloc(sizeof(char *) * 3);
+	if (!sep_str)
+		exit (12);
 	sep_str[0] = ft_strndup(&line[0][p[0] + 1], p[1] - p[0]);
 	sep_str[1] = find_env(env, sep_str[0]);
 	sep_str[2] = NULL;
