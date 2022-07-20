@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:14:19 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 20:28:35 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 14:30:41 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 # include "env.h"
 
 //quote
-char	*no_quote_line(char **origin);
 int		s_line_handler(char *line, int *idx, int *dollar_cnt);
-char	*no_quote_line_handler(char **origin, int exit_code, t_env *env);
 char	*d_line_handler(t_env *env, char **origin, int exit_code);
 char	*quote_line(char **origin, int exit_code, t_env *env);
 
