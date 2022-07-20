@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:01:51 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/20 18:41:05 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 20:12:27 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	ft_tolower_str(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return ;
 	while (str[i])
 	{
 		if (str[i] >= 'A' && str[i] <= 'Z')

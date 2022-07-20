@@ -12,6 +12,8 @@ char	*ft_prompt(void)
 		printf("exit\n");
 		exit(g_exit);
 	}
+	else if (line[0] == 0)
+		return (line);
 	else
 	{
 		add_history(line);
