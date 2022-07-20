@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:06:21 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 18:06:55 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 21:03:11 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	change_path(t_env *env, char ***env_arr, char **path, char *key);
 
 //cd_utils
 void	cd_hyphen(t_env *env, char **before, char **after, int *ret);
+char	*check_home_path(char **home, char *line);
 char	*check_cd_home(t_env *env, char *line, char **home);
-char	*no_arg_cd_home(t_env *env);
+char	*no_arg_cd_home(t_env *env, char **home);
 
 #endif
