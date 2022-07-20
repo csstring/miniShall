@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:02:34 by soo               #+#    #+#             */
-/*   Updated: 2022/07/17 20:47:13 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 15:45:49 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,16 @@ static	t_env *get_last(t_env *head)
 	return (head);
 }
 
-t_env	*split_env(t_env *head, char **envp)
+t_env	*head_node_init(t_env **head, t_env **new)
+{
+	(*head)->key = (*new)->key;
+	(*head)->value = (*new)->value;
+	(*head)->next = NULL;
+	free(*new);
+	return (*head);
+}
+
+t_env	*init_env(t_env *head, char **envp)
 {
 	t_env *new;
 	char **split_equal;
@@ -34,12 +43,7 @@ t_env	*split_env(t_env *head, char **envp)
 		new->key = ft_strdup(split_equal[0]);
 		new->value = ft_strdup(split_equal[1]);
 		if (!head->key)
-		{
-			head->key = new->key;
-			head->value = new->value;
-			head->next = NULL;
-			free(new);
-		}
+			head_node_init(&head, &new);
 		else
 		{
 			get_last(head)->next = new;
@@ -48,9 +52,4 @@ t_env	*split_env(t_env *head, char **envp)
 		str_free(split_equal);
 	}
 	return (head);
-}
-
-t_env	*init_env(t_env *head, char **envp)
-{
-	return (split_env(head, envp));
 }

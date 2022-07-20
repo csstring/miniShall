@@ -6,23 +6,18 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/19 20:56:38 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/20 16:25:57 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*no_arg_cd_home(t_env *env)
+static int	print_error(char *line)
 {
-	char	*home_path;
-
-	home_path = find_env(env, "HOME");
-	if (home_path[0] == '\0')
-	{
-		ft_putstr_fd("ss_shell: cd: HOME not set\n", 2);
-		return (NULL);
-	}
-	return (home_path);
+	ft_putstr_fd("ss_shell: cd: ", 2);
+	ft_putstr_fd(line, 2);
+	ft_putstr_fd(": No such file or directory\n", 2);
+	return (1);
 }
 
 void	change_path(t_env *env, char ***env_arr, char **path, char *key)
@@ -34,52 +29,11 @@ void	change_path(t_env *env, char ***env_arr, char **path, char *key)
 	c_path[0] = ft_strdup("export");
 	c_path[1] = ft_strjoin(key, *path);
 	free(*path);
-	export(env, c_path, env_arr);
+	export_env(env, c_path, env_arr);
 	str_free(c_path);
 }
 
-static int print_error(char *line)
-{
-	ft_putstr_fd("ss_shell: cd: ", 2);
-	ft_putstr_fd(line, 2);
-	ft_putstr_fd(": No such file or directory\n", 2);
-	return (1);
-}
-
-char	*check_cd_home(t_env *env, char *line, char **home)
-{
-	t_env	*now;
-
-	now = env;
-	if (!line)
-	{
-		*home = no_arg_cd_home(env);
-		if (!*home)
-			return (NULL);
-	}
-	else if (!ft_strncmp(line, "~", 2))
-	{
-		while(now)
-		{
-			if (!ft_strncmp(now->key, "HOME", 5))
-			{
-				*home = ft_strdup(now->value);
-				return (*home);
-			}
-			now = now->next;
-		}
-	}
-	return (*home);
-}
-
-void	cd_hyphen(t_env *env, char **before, char **after, int *ret)
-{
-	*before = find_env(env, "PWD");
-	*after = find_env(env, "OLDPWD");
-	*ret = chdir(*after);
-}
-
-int chdir_main(t_env *env, char **line, char ***env_arr)
+int	chdir_main(t_env *env, char **line, char ***env_arr)
 {
 	char	*home;
 	char	*before;
@@ -87,7 +41,7 @@ int chdir_main(t_env *env, char **line, char ***env_arr)
 	int		ret;
 
 	home = NULL;
-	if (!ft_strncmp(line[1], "-", 2))
+	if (line[1] && !ft_strncmp(line[1], "-", 2))
 		cd_hyphen(env, &before, &after, &ret);
 	else
 	{
