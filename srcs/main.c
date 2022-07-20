@@ -1,9 +1,18 @@
 #include "minishell.h"
 
+static void	ft_print_quit(void)
+{
+	if (g_exit == 130)
+		printf("\n");
+	else if (g_exit == 131)
+		printf("Quit: 3\n");
+}
+
 char	*ft_prompt(void)
 {
 	char	*line;
 
+	ft_print_quit();
 	line = readline("ss_shell$ ");
 	if (line == NULL)
 	{
