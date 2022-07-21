@@ -62,7 +62,7 @@ int	ft_error_check(int i, t_pipex *val)
 		return (127);
 	}
 	ft_check_dir(i, val);
-	if (val->exe_path[i] == NULL)
+	if (val->exe_path[i][0] == 0)
 	{
 		if (ft_check_file(i, val))
 			return (2);
