@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:52:52 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 18:27:24 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 21:00:09 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	ft_cmd_end(int i, t_pipex *val, t_env *env)
 	if (infile == -1)
 		dup2(val->fd[i - 1][P_R], STDIN_FILENO);
 	close(val->fd[i - 1][P_R]);
-	if (ft_built_check(val->cmd[i][0]))
+	if (val->cmd[i][0] == NULL)
+		exit(0);
+	else if (ft_built_check(val->cmd[i][0]))
 		exit(ft_in_built(val, i, env));
 	else
 		ft_error_check_exit(i, val);
@@ -61,7 +63,9 @@ void	ft_cmd_mid1(int i, t_pipex *val, t_env *env)
 	if (outfile == -1)
 		dup2(val->fd[i][P_W], STDOUT_FILENO);
 	close(val->fd[i][P_W]);
-	if (ft_built_check(val->cmd[i][0]))
+	if (val->cmd[i][0] == NULL)
+		exit(0);
+	else if (ft_built_check(val->cmd[i][0]))
 		exit(ft_in_built(val, i, env));
 	else
 		ft_error_check_exit(i, val);
@@ -85,7 +89,9 @@ void	ft_cmd_start(int i, t_pipex *val, t_env *env)
 		}
 	}
 	ft_in_out_close(infile, outfile);
-	if (ft_built_check(val->cmd[i][0]))
+	if (val->cmd[i][0] == NULL)
+		exit(0);
+	else if (ft_built_check(val->cmd[i][0]))
 		exit(ft_in_built(val, i, env));
 	else
 		ft_error_check_exit(i, val);

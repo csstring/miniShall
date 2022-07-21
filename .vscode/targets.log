@@ -8,11 +8,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Wed Jul 20 17:27:49 2022
+# Make data base, printed on Thu Jul 21 13:46:50 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -44,7 +43,7 @@ OBJS = $(C_OBJS) $(S_OBJS)
 # environment
 P9K_SSH = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cq5r0035sf/T/vscode-ipc-dc9eb64e-9650-441e-a048-1f4a48352214.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cq5r0035sf/T/vscode-ipc-70e99385-347d-4233-b7da-2b212b35e596.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -54,7 +53,7 @@ S_SRCS = srcs/cd/change_directory.c srcs/cd/cd_utils.c srcs/env/env.c srcs/env/u
 # makefile (from `Makefile', line 12)
 READLINE_INC = -I /Users/$(USER)/.brew/opt/readline/include
 # environment
-LaunchInstanceID = 7C1DFBE4-7AD1-4221-B926-488EBFF0C902
+LaunchInstanceID = B95AAF2A-3030-4291-8756-693462431887
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -62,7 +61,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.H61feG1wXg/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.jxsvER2gDJ/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -78,6 +77,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /Users/soo
 # default
+ 
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/soo/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
@@ -134,7 +134,7 @@ MFLAGS = -Rrqp
 # environment
 MAIL = soo@student.42seoul.kr
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -150,7 +150,7 @@ MAKEFILES :=
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a6
+SECURITYSESSIONID = 186c6
 # automatic
 ^F = $(notdir $^)
 # default
@@ -164,9 +164,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 829
+VSCODE_PID = 33122
 # variable set hash-table stats:
-# Load=76/1024=7%, Rehash=0, Collisions=10/115=9%
+# Load=76/1024=7%, Rehash=0, Collisions=10/109=9%
 
 # Pattern-specific Variable Values
 
@@ -178,9 +178,9 @@ VSCODE_PID = 829
 # srcs/env (device 16777225, inode 4497380): 13 files, no impossibilities so far.
 # srcs/cd (device 16777225, inode 4497404): 5 files, no impossibilities so far.
 # srcs/quote (device 16777225, inode 4497306): 9 files, no impossibilities so far.
-# srcs (device 16777225, inode 4497294): 41 files, no impossibilities so far.
+# srcs (device 16777225, inode 4497294): 44 files, no impossibilities so far.
 
-# 78 files, no impossibilities in 5 directories.
+# 81 files, no impossibilities in 5 directories.
 
 # Implicit Rules
 
@@ -196,7 +196,7 @@ VSCODE_PID = 829
 srcs/ft_parsing_sep.o: srcs/ft_parsing_sep.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_parsing_sep'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -208,7 +208,7 @@ srcs/ft_parsing_sep.o: srcs/ft_parsing_sep.c
 # Not a target:
 srcs/cd/cd_utils.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 16:25:57
+#  Last modified 2022-07-20 21:09:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -217,7 +217,7 @@ srcs/cd/cd_utils.c:
 srcs/env/unset.o: srcs/env/unset.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/env/unset'
-#  Last modified 2022-07-20 16:38:08
+#  Last modified 2022-07-20 21:39:01
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -229,7 +229,7 @@ srcs/env/unset.o: srcs/env/unset.c
 srcs/ft_pipe_utils.o: srcs/ft_pipe_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_pipe_utils'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -243,14 +243,14 @@ all: minishell
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 srcs/ft_main_utils.o: srcs/ft_main_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_main_utils'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -271,7 +271,7 @@ srcs/ft_free.c:
 srcs/env/print_env_export.o: srcs/env/print_env_export.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/env/print_env_export'
-#  Last modified 2022-07-20 16:38:08
+#  Last modified 2022-07-20 21:25:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -283,17 +283,16 @@ srcs/env/print_env_export.o: srcs/env/print_env_export.c
 # Not a target:
 srcs/quote/quote_str_utils.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 16:42:47
+#  Last modified 2022-07-20 18:52:17
 #  File has been updated.
 #  Successfully updated.
- 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 srcs/quote/quote_utils.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-19 21:01:36
+#  Last modified 2022-07-20 18:52:03
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -311,7 +310,7 @@ srcs/ft_syntax_utils.c:
 srcs/quote/quote.o: srcs/quote/quote.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/quote/quote'
-#  Last modified 2022-07-20 16:40:40
+#  Last modified 2022-07-20 21:25:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -323,7 +322,7 @@ srcs/quote/quote.o: srcs/quote/quote.c
 srcs/ft_syntax.o: srcs/ft_syntax.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_syntax'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -335,7 +334,7 @@ srcs/ft_syntax.o: srcs/ft_syntax.c
 srcs/ft_cmd.o: srcs/ft_cmd.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_cmd'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:07
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -347,7 +346,7 @@ srcs/ft_cmd.o: srcs/ft_cmd.c
 srcs/ft_trans_quot.o: srcs/ft_trans_quot.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_trans_quot'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -356,10 +355,11 @@ srcs/ft_trans_quot.o: srcs/ft_trans_quot.c
 	$(CC) $(CFLAGS) $(READLINE_INC) -c $< -o $@
 	
 
+ 
 srcs/env/export_utils.o: srcs/env/export_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/env/export_utils'
-#  Last modified 2022-07-20 16:38:08
+#  Last modified 2022-07-20 21:25:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -377,7 +377,7 @@ srcs/env/export_utils.o: srcs/env/export_utils.c
 # Not a target:
 srcs/env/env_arr.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 16:21:58
+#  Last modified 2022-07-20 18:38:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -395,7 +395,7 @@ Makefile:
 # Not a target:
 srcs/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 14:35:31
+#  Last modified 2022-07-20 21:10:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -403,22 +403,29 @@ srcs/main.c:
 
 libft.a:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-07-20 21:25:11
+#  File has been updated.
+#  Successfully updated.
 #  commands to execute (from `Makefile', line 54):
 	@make -C ./libft
 	
 
-# Not a target:
-srcs/utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/utils.o: srcs/utils.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/utils'
+#  Last modified 2022-07-20 21:25:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 57):
+	$(CC) $(CFLAGS) $(READLINE_INC) -c $< -o $@
+	
 
 # Not a target:
 srcs/ft_parsing_sep.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 14:35:31
+#  Last modified 2022-07-20 18:49:27
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -427,7 +434,7 @@ srcs/ft_parsing_sep.c:
 srcs/ft_builtin.o: srcs/ft_builtin.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_builtin'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -439,7 +446,7 @@ srcs/ft_builtin.o: srcs/ft_builtin.c
 srcs/ft_error_check_exit.o: srcs/ft_error_check_exit.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_error_check_exit'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -451,7 +458,7 @@ srcs/ft_error_check_exit.o: srcs/ft_error_check_exit.c
 srcs/ft_utils.o: srcs/ft_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_utils'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -463,7 +470,7 @@ srcs/ft_utils.o: srcs/ft_utils.c
 # Not a target:
 srcs/env/unset.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 15:36:22
+#  Last modified 2022-07-20 21:38:55
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -471,11 +478,11 @@ srcs/env/unset.c:
 
 minishell: srcs/main.o srcs/ft_cmd.o srcs/ft_parsing.o srcs/ft_error_check.o srcs/ft_pipe_utils.o srcs/ft_pipe.o srcs/ft_dire_file.o srcs/ft_utils.o srcs/ft_echo.o srcs/ft_free.o srcs/ft_syntax.o srcs/ft_trans_quot.o srcs/ft_make_here_doc.o srcs/ft_error_check_exit.o srcs/ft_parsing_sep.o srcs/ft_syntax_utils.o srcs/ft_builtin.o srcs/ft_main_utils.o srcs/ft_exit.o srcs/cd/change_directory.o srcs/cd/cd_utils.o srcs/env/env.o srcs/env/unset.o srcs/env/export.o srcs/env/env_arr.o srcs/env/export_utils.o srcs/env/print_env_export.o srcs/quote/quote.o srcs/quote/quote_utils.o srcs/quote/quote_str_utils.o srcs/quote/quote_find_utils.o srcs/utils.o libft.a
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-20 16:42:30
+#  Last modified 2022-07-20 21:39:01
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 51):
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(READLINE_INC) $(READLINE_LIB)
 	
@@ -483,7 +490,7 @@ minishell: srcs/main.o srcs/ft_cmd.o srcs/ft_parsing.o srcs/ft_error_check.o src
 srcs/ft_echo.o: srcs/ft_echo.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_echo'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -495,7 +502,7 @@ srcs/ft_echo.o: srcs/ft_echo.c
 # Not a target:
 srcs/ft_pipe_utils.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 14:35:31
+#  Last modified 2022-07-20 18:49:27
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -504,7 +511,7 @@ srcs/ft_pipe_utils.c:
 srcs/ft_pipe.o: srcs/ft_pipe.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_pipe'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -531,18 +538,23 @@ fclean: clean
 	@rm -rf $(NAME) $(OBJS)
 	
 
-# Not a target:
-srcs/quote/quote_find_utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/quote/quote_find_utils.o: srcs/quote/quote_find_utils.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/quote/quote_find_utils'
+#  Last modified 2022-07-20 21:25:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 57):
+	$(CC) $(CFLAGS) $(READLINE_INC) -c $< -o $@
+	
 
 # Not a target:
 srcs/env/print_env_export.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 15:28:36
+#  Last modified 2022-07-20 18:00:58
 #  File has been updated.
- 
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
@@ -550,7 +562,7 @@ srcs/env/print_env_export.c:
 srcs/ft_dire_file.o: srcs/ft_dire_file.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_dire_file'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -562,7 +574,7 @@ srcs/ft_dire_file.o: srcs/ft_dire_file.c
 srcs/ft_error_check.o: srcs/ft_error_check.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_error_check'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:07
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -574,7 +586,7 @@ srcs/ft_error_check.o: srcs/ft_error_check.c
 # Not a target:
 srcs/quote/quote.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 16:40:36
+#  Last modified 2022-07-20 19:43:37
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -592,16 +604,17 @@ srcs/ft_syntax.c:
 # Not a target:
 srcs/ft_cmd.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 14:35:31
+#  Last modified 2022-07-20 21:10:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
+ 
 # Not a target:
 srcs/ft_trans_quot.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 14:35:31
+#  Last modified 2022-07-20 18:49:27
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -610,7 +623,7 @@ srcs/ft_trans_quot.c:
 srcs/ft_parsing.o: srcs/ft_parsing.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_parsing'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:07
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -628,7 +641,7 @@ srcs/ft_parsing.o: srcs/ft_parsing.c
 # Not a target:
 srcs/env/export_utils.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 15:33:08
+#  Last modified 2022-07-20 18:00:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -637,7 +650,7 @@ srcs/env/export_utils.c:
 # Not a target:
 srcs/ft_echo.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 14:35:31
+#  Last modified 2022-07-20 21:10:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -646,7 +659,7 @@ srcs/ft_echo.c:
 srcs/ft_exit.o: srcs/ft_exit.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_exit'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -658,7 +671,7 @@ srcs/ft_exit.o: srcs/ft_exit.c
 srcs/env/export.o: srcs/env/export.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/env/export'
-#  Last modified 2022-07-20 16:38:08
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -670,7 +683,7 @@ srcs/env/export.o: srcs/env/export.c
 srcs/ft_make_here_doc.o: srcs/ft_make_here_doc.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_make_here_doc'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -682,7 +695,7 @@ srcs/ft_make_here_doc.o: srcs/ft_make_here_doc.c
 # Not a target:
 srcs/env/env.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 15:45:49
+#  Last modified 2022-07-20 18:38:23
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -691,7 +704,7 @@ srcs/env/env.c:
 srcs/cd/change_directory.o: srcs/cd/change_directory.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/cd/change_directory'
-#  Last modified 2022-07-20 16:38:08
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -712,13 +725,12 @@ clean:
 #  commands to execute (from `Makefile', line 60):
 	@make clean -C libft/
 	@rm -rf $(OBJS)
- 
 	
 
 srcs/cd/cd_utils.o: srcs/cd/cd_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/cd/cd_utils'
-#  Last modified 2022-07-20 16:38:08
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -728,9 +740,18 @@ srcs/cd/cd_utils.o: srcs/cd/cd_utils.c
 	
 
 # Not a target:
+srcs/utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-20 15:33:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
 srcs/ft_builtin.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 16:16:30
+#  Last modified 2022-07-20 21:10:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -748,7 +769,7 @@ srcs/ft_error_check_exit.c:
 # Not a target:
 srcs/ft_utils.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 14:35:31
+#  Last modified 2022-07-20 21:10:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -757,7 +778,7 @@ srcs/ft_utils.c:
 # Not a target:
 srcs/ft_pipe.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 16:35:25
+#  Last modified 2022-07-20 18:49:27
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -766,7 +787,7 @@ srcs/ft_pipe.c:
 srcs/ft_free.o: srcs/ft_free.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_free'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -778,27 +799,11 @@ srcs/ft_free.o: srcs/ft_free.c
 srcs/quote/quote_str_utils.o: srcs/quote/quote_str_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/quote/quote_str_utils'
-#  Last modified 2022-07-20 16:42:30
+#  Last modified 2022-07-20 21:25:09
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := srcs/quote/quote_str_utils.o
-# automatic
-# % := 
-# automatic
-# * := srcs/quote/quote_str_utils
-# automatic
-# + := srcs/quote/quote_str_utils.c
-# automatic
-# | := 
-# automatic
-# < := srcs/quote/quote_str_utils.c
-# automatic
-# ^ := srcs/quote/quote_str_utils.c
-# automatic
-# ? := srcs/quote/quote_str_utils.c
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 57):
 	$(CC) $(CFLAGS) $(READLINE_INC) -c $< -o $@
 	
@@ -806,7 +811,7 @@ srcs/quote/quote_str_utils.o: srcs/quote/quote_str_utils.c
 srcs/quote/quote_utils.o: srcs/quote/quote_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/quote/quote_utils'
-#  Last modified 2022-07-20 16:38:08
+#  Last modified 2022-07-20 21:25:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -818,7 +823,7 @@ srcs/quote/quote_utils.o: srcs/quote/quote_utils.c
 srcs/ft_syntax_utils.o: srcs/ft_syntax_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_syntax_utils'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -826,6 +831,15 @@ srcs/ft_syntax_utils.o: srcs/ft_syntax_utils.c
 #  commands to execute (from `Makefile', line 57):
 	$(CC) $(CFLAGS) $(READLINE_INC) -c $< -o $@
 	
+
+# Not a target:
+srcs/quote/quote_find_utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-19 21:00:22
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 srcs/ft_dire_file.c:
@@ -848,7 +862,7 @@ srcs/ft_error_check.c:
 srcs/env/env.o: srcs/env/env.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/env/env'
-#  Last modified 2022-07-20 16:38:08
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -860,7 +874,7 @@ srcs/env/env.o: srcs/env/env.c
 srcs/env/env_arr.o: srcs/env/env_arr.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/env/env_arr'
-#  Last modified 2022-07-20 16:38:08
+#  Last modified 2022-07-20 21:25:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -871,8 +885,9 @@ srcs/env/env_arr.o: srcs/env/env_arr.c
 
 # Not a target:
 srcs/ft_parsing.c:
+ 
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 14:35:31
+#  Last modified 2022-07-20 18:14:33
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -881,7 +896,7 @@ srcs/ft_parsing.c:
 srcs/main.o: srcs/main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/main'
-#  Last modified 2022-07-20 16:38:07
+#  Last modified 2022-07-20 21:25:07
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -902,7 +917,7 @@ srcs/ft_exit.c:
 # Not a target:
 srcs/env/export.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 15:47:26
+#  Last modified 2022-07-20 19:17:05
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -920,14 +935,14 @@ srcs/ft_make_here_doc.c:
 # Not a target:
 srcs/cd/change_directory.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 16:25:57
+#  Last modified 2022-07-20 21:09:32
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=71/1024=7%, Rehash=0, Collisions=6/211=3%
+# Load=73/1024=7%, Rehash=0, Collisions=9/219=4%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -939,6 +954,6 @@ srcs/cd/change_directory.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Jul 20 17:27:49 2022
+# Finished Make data base on Thu Jul 21 13:46:50 2022
 
  
