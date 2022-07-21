@@ -70,6 +70,7 @@ static int	ft_pipex2(pid_t pid, t_pipex *val, int i, t_env *env)
 		waitpid(0, NULL, 0);
 		k++;
 	}
+	ft_tc();
 	return (ft_exit_sig(st));
 }
 
