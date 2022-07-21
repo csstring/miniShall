@@ -24,13 +24,11 @@ void	sig_handler(int signum)
 	g_exit = 1;
 }
 
-void	ft_tc(int ac, char **av)
+void	ft_tc(void)
 {
 	struct termios	termios;
 
 	tcgetattr(STDIN_FILENO, &termios);
 	termios.c_lflag &= ~ECHOCTL;
 	tcsetattr(STDIN_FILENO, TCSANOW, &termios);
-	(void)ac;
-	(void)av;
 }

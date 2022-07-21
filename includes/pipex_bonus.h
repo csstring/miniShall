@@ -67,7 +67,7 @@ int		ft_exit_sig(int st);
 //main
 int		ft_pipe(char *line, char ***envp, t_env *env);
 void	sig_handler(int signum);
-void	ft_tc(int ac, char **av);
+void	ft_tc(void);
 //etc
 int		ft_dire_in(char **indirec, int index);
 int		ft_dire_out(char **outdirec);
