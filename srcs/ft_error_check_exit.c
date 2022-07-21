@@ -61,7 +61,7 @@ void	ft_error_check_exit(int i, t_pipex *val)
 		exit(127);
 	}
 	ft_check_dir(i, val);
-	if (val->exe_path[i] == NULL)
+	if (val->exe_path[i][0] == 0)
 	{
 		ft_check_file(i, val);
 		ft_eprintf("ss_shell: %s: command not found\n", \
