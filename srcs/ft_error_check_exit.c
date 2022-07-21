@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_check.c                                   :+:      :+:    :+:   */
+/*   ft_error_check_exit.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:08 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 18:27:44 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/21 15:56:41 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_check_file(int i, t_pipex *val)
 		{
 			ft_eprintf("ss_shell: %s: %s\n", val->cmd[i][0], \
 					strerror(2));
-			exit(2);
+			exit(127);
 		}
 		j++;
 	}
@@ -61,7 +61,7 @@ void	ft_error_check_exit(int i, t_pipex *val)
 		exit(127);
 	}
 	ft_check_dir(i, val);
-	if (val->exe_path[i] == NULL)
+	if (val->exe_path[i][0] == 0)
 	{
 		ft_check_file(i, val);
 		ft_eprintf("ss_shell: %s: command not found\n", \

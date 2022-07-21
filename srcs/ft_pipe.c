@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 21:05:12 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/20 18:42:57 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 21:36:24 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,23 @@ static void	ft_init(t_pipex *val, char **line, char ***envp, int i)
 	val->temp[val->ac] = NULL;
 }
 
+static void	ft_tc_re(void)
+{	
+	struct termios	termios;
+
+	tcgetattr(STDIN_FILENO, &termios);
+	termios.c_lflag |= ECHOCTL;
+	tcsetattr(STDIN_FILENO, TCSANOW, &termios);
+	signal(SIGQUIT, SIG_DFL);
+}
+
 static int	ft_pipex2(pid_t pid, t_pipex *val, int i, t_env *env)
 {
 	int	st;
 	int	k;
 
 	if (pid == 0)
-		signal(SIGQUIT, SIG_DFL);
+		ft_tc_re();
 	if (val->ac != 1)
 		ft_close_fd(pid, val, i);
 	if (pid == 0 && i == 0)
@@ -60,6 +70,7 @@ static int	ft_pipex2(pid_t pid, t_pipex *val, int i, t_env *env)
 		waitpid(0, NULL, 0);
 		k++;
 	}
+	ft_tc();
 	return (ft_exit_sig(st));
 }
 

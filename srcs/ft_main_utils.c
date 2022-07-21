@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:51:46 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/20 16:14:40 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/20 21:37:04 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ void	sig_handler(int signum)
 	g_exit = 1;
 }
 
-void	ft_tc(int ac, char **av)
+void	ft_tc(void)
 {
 	struct termios	termios;
 
 	tcgetattr(STDIN_FILENO, &termios);
 	termios.c_lflag &= ~ECHOCTL;
 	tcsetattr(STDIN_FILENO, TCSANOW, &termios);
-	(void)ac;
-	(void)av;
 }

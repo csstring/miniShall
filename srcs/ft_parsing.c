@@ -48,7 +48,7 @@ int	ft_access_check(char *cmd, t_pipex *val, int check)
 	i = 0;
 	if (cmd == NULL)
 	{
-		val->exe_path[check] = NULL;
+		val->exe_path[check] = ft_strdup("");
 		return (0);
 	}
 	while (val->path && val -> path[i])
@@ -57,7 +57,7 @@ int	ft_access_check(char *cmd, t_pipex *val, int check)
 			return (0);
 		i++;
 	}
-	val->exe_path[check] = NULL;
+	val->exe_path[check] = ft_strdup("");
 	return (0);
 }
 

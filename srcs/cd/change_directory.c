@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:05:05 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 21:09:32 by soo              ###   ########.fr       */
+/*   Updated: 2022/07/21 15:55:11 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,13 @@ int	chdir_execve(t_env *env, char **line, char **before, char **home)
 	if (!line[1])
 	{
 		no_arg_cd_home(env, home);
-		if (!*home)
+		if (!*home || home[0][0] == '\0')
+		{
+			if (home[0][0] == '\0')
+				free(*home);
+			free(*before);
 			return (1);
+		}
 	}
 	else
 		*home = check_cd_home(env, line[1], home);
@@ -76,6 +81,8 @@ int	chdir_main(t_env *env, char **line, char ***env_arr)
 			free(before);
 			return (print_error(line[1]));
 		}
+		if (ret == 1)
+			return (1);
 		after = getcwd(NULL, 0);
 	}
 	change_path(env, env_arr, &before, "OLDPWD=");

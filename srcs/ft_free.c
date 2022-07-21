@@ -46,9 +46,6 @@ void	ft_free2(void **temp)
 
 void	ft_pipe_clear(t_pipex *val)
 {
-	int	i;
-
-	i = 0;
 	ft_free2((void **)val->path);
 	ft_free3((void ***)val->cmd);
 	ft_free3((void ***)val->indirec);
