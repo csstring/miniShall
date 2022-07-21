@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:53:08 by schoe             #+#    #+#             */
-/*   Updated: 2022/07/19 18:27:39 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/21 15:56:53 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_check_file(int i, t_pipex *val)
 		{
 			ft_eprintf("ss_shell: %s: %s\n", val->cmd[i], \
 					strerror(2));
-			return (2);
+			return (127);
 		}
 		j++;
 	}

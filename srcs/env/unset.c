@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:08:34 by soo               #+#    #+#             */
-/*   Updated: 2022/07/20 21:41:01 by schoe            ###   ########.fr       */
+/*   Updated: 2022/07/21 14:15:44 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	unset_key_check(t_env **env, char *del)
 	while (del[i])
 		if (del[i++] == '=')
 			return (0);
-	while (now)
+	while (now->next)
 	{
 		if (now->value && !ft_strncmp(now->value, del, ft_strlen(del) + 1))
 		{

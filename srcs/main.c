@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/21 14:28:57 by soo               #+#    #+#             */
+/*   Updated: 2022/07/21 15:58:36 by soo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static void	ft_print_quit(void)
@@ -19,7 +31,6 @@ char	*ft_prompt(void)
 		printf("\033[1A");
 		printf("\033[10C");
 		printf("exit\n");
-		//system("leaks minishell | grep 'Process '");	
 		exit(g_exit);
 	}
 	else if (line[0] == 0)
@@ -48,24 +59,20 @@ void	main_loop(t_env *env, char **envp, int exit_code)
 		line = ft_prompt();
 		exit_code = ft_syntax_check(&line);
 		if (exit_code || ft_taptosp(line))
-		{printf("\n");
-//		system("leaks minishell | grep 'Process '");
+		{
 			ft_module(exit_code, line);
 			continue ;
 		}
 		exit_code = g_exit;
 		quote_line(&line, exit_code, env);
 		if (line[0] == 0)
-		{	printf("\n");
-//		system("leaks minishell | grep 'Process '");
+		{	
 			ft_module(exit_code, line);
 			continue ;
 		}
 		ft_pipe(line, &envp, env);
 		signal(SIGINT, sig_handler);
 		free(line);
-		printf("\n");
-//		system("leaks minishell | grep 'Process '");
 	}
 }
 
