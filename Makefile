@@ -2,8 +2,8 @@
 CFLAGS = -Wall -Werror -Wextra -Iincludes
 CC = cc
 
-READLINE_LIB 	= -lreadline -L /Users/$(USER)/.brew/opt/readline/lib
-READLINE_INC	= -I /Users/$(USER)/.brew/opt/readline/include
+READLINE_LIB 	= -lreadline -L ./readline/8.2.1/lib
+READLINE_INC	= -I ./readline/8.2.1/include/
 
 SRCS = srcs/main.c srcs/ft_cmd.c srcs/ft_parsing.c srcs/ft_error_check.c \
 	   srcs/ft_pipe_utils.c srcs/ft_pipe.c srcs/ft_dire_file.c srcs/ft_utils.c \
